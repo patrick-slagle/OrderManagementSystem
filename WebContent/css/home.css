@@ -1,0 +1,200 @@
+body, html {
+	width: 100%;
+	height: 100%;
+}
+
+.headerContainer {
+	width: 100%;
+}
+
+#bodyContainer {
+	margin: auto;
+	width: 50%;
+	padding: 10px;
+	padding-top: 70px;
+}
+
+.header {
+	width: 100%;
+	height: 100%;
+	background: #CFC3F8;
+}
+
+.logo {@import url('https://fonts.googleapis.com/css?family=Allura');width: 
+	 260px ; padding: 0; padding-left: 15px; margin: 0; font-family: Allura, sans-serif ;
+	font-size: 35px ; color: #0034AF ;
+	
+}
+
+.navbar-default {
+	padding: 0;
+	margin: 0;
+	background: #CFC3F8;
+}
+
+.navbar {
+	width: 60%;
+	margin: auto;
+	padding: 0;
+	box-shadow: 5px 5px 2px #888888;
+	padding: 0;
+	margin-top: 5px;
+}
+
+.allura {@import url('https://fonts.googleapis.com/css?family=Allura');font-family: Allura,
+	sans-serif ;
+	
+}
+
+#menuDiv {
+	width: 100%;
+	height: 60px;
+	background: #4EAFCD;
+	padding: 0;
+	margin: 0;
+	border: none;
+	border-bottom: solid 1px #f1d0d6;
+}
+
+ul {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	list-style-type: none;
+}
+
+.headerTabs:hover {
+	background-color: #f1f1f1;
+}
+
+.headerTabs a {
+	display: block;
+}
+
+/*FIX*/
+ul li a:hover {
+	color: #332419;
+	text-decoration: none;
+	background: #999;
+}
+
+.headerTabs {
+	height: 100%;
+	width: 195px;
+	float: right;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 60px;
+	text-align: center;
+	font-size: 16px;
+	border-left: solid white 2px;
+}
+
+.tabDiv {
+	padding: 0;
+	float: right;
+}
+
+/* Style the list */
+ul.tab {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+/* Float the list items side by side */
+ul.tab li {
+	float: left;
+}
+
+/* Style the links inside the list items */
+ul.tab li a {
+	display: inline-block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	transition: 0.3s;
+	font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+	background-color: #CFC3F8;
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+	background-color: #CFC3F8;
+}
+
+/* Style the tab content */
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+#container {
+	width: 100%;
+	height: 100%;
+	padding: 120px 0 0 550px;
+	background: #4EAFCD;
+}
+
+#calendar {
+	width: 100%;
+	height: 100%;
+}
+
+iframe {
+	width: 100%;
+	min-height: 600px;
+}
+
+#mainHeader {@import
+	url('https://fonts.googleapis.com/css?family=Allura');font-family: Allura,
+	sans-serif ; font-size: 45px ; color: #0034AF ;
+	
+}
+
+table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+table tr {
+	background: #f7f7f7;
+}
+
+table tr:hover {
+	color: white;
+	background: #0034AF;
+}
+
+table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background: #4EAFCD;
+	color: white;
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+table td, th {
+	border: 1px solid #ddd;
+	padding: 8px;
+	margin: auto;
+	width: 50%;
+}
+
+.tableHeaders {
+	font-size: 30px;
+	font-family: Veranda, sans-serif;
+}

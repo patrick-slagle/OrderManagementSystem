@@ -1,0 +1,176 @@
+@CHARSET "UTF-8";
+
+* { @include box-sizing(border-box);
+	
+}
+
+body, html {
+	width: 100%;
+	height: 100%;
+}
+
+.menubar {
+	background: #CFC3F8;
+	box-shadow: 5px 5px 2px #888888;
+}
+
+.menubar a#logo {@import
+	url('https://fonts.googleapis.com/css?family=Allura');width: 
+	 260px ; padding: 0 0 0 15px ; margin: 0; font-family: Allura,
+	sans-serif ; font-size: 35px ; color: #0034AF ;
+	
+}
+
+.menubar ul li a.menuItems {
+	display: inline-block;
+	text-decoration: none;
+}
+
+.menubar ul {
+	float: right;
+}
+
+.menubar ul li {
+	height: 100%;
+	width: 195px;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 60px;
+	text-align: center;
+	font-size: 16px;
+	border-left: solid white 2px;
+	color: #332419;
+}
+
+.menubar ul li a.menuItems {
+	width: 100%;
+	height: 100%;
+}
+
+.menubar ul li a.menuItems:hover {
+	color: #332419;
+	text-decoration: none;
+	background-color: #f1f1f1;
+}
+
+.headerDiv {
+	width: 100%;
+}
+
+.headerDiv h1 {@import
+	url('https://fonts.googleapis.com/css?family=Allura');font-family: Allura,
+	sans-serif ; font-size: 45px ; color: #0034AF ; text-align: center ;
+	
+}
+
+.charts {
+	width: 80%;
+	height: 35%;
+	border: 1px solid blue;
+	overflow: hidden;
+	margin: auto;
+	margin-top: 50px;
+	background: #CFC3F8;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+.pieChartDiv {
+	padding: 0;
+	float: right;
+	width: 50%;
+	height: 100%;
+	border-left: 1px solid white;
+}
+
+.lineChartDiv {
+	padding: 0;
+	float: left;
+	width: 50%;
+	height: 100%;
+}
+
+#piechart {
+	margin: auto;
+	width: 100%;
+	height: 100%;
+}
+
+#chart_div {
+	margin: auto;
+	width: 100%;
+	height: 80%;
+}
+
+.sales {
+	width: 80%;
+	height: 45%;
+	border: 1px solid blue;
+	overflow: hidden;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 30px;
+	background: #CFC3F8;
+	box-shadow: 10px 10px 5px #888888;
+	padding-top: 40px;
+}
+
+.sales table {
+	margin: auto;
+	width: 80%;
+	table-layout: fixed;
+}
+
+.sales table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.sales table th {
+	background: #4EAFCD;
+	color: white;
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
+	font-size: 1.7em;
+	font-family: Veranda, sans-serif;
+}
+
+.sales table td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	margin: auto;
+	width: 100%;
+	height: 20px;
+	text-align: center;
+}
+
+@media only screen and (max-width: 460px) {
+	.charts {
+		width: 80%;
+		height: 70%;
+	}
+	.pieChartDiv {
+		width: 100%;
+		height: 50%;
+		border: none;
+		border-bottom: 1px solid white;
+	}
+	.lineChartDiv {
+		width: 100%;
+		height: 50%;
+	}
+	.sales {
+		width: 80%;
+		height: 70%;
+	}
+	.sales table {
+		width: 95%;
+		height: 95%;
+	}
+	.sales table th {
+		font-size: 1.7em;
+	}
+	.sales table td {
+		height: 10px;
+	}
+}

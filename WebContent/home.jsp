@@ -1,0 +1,108 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/home.css">
+<link href='https://fonts.googleapis.com/css?family=Allura'
+	rel='stylesheet' type='text/css'>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/tabs.js"></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5
+elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the
+page via file:// -->
+<script src="https://oss.maxcdn.com/libs/html5shiv/
+3.7.0/html5shiv.js"></script>
+<script
+	src="https://oss.maxcdn.com/libs/respond.js/
+1.4.2/respond.min.js"></script>
+
+</head>
+	<div class="headerContainer">
+		<div class="navbar navbar-default padding">
+			<div class="header">
+				<div class="navbar-header padding">
+					<a href="" class="allura logo">PattyCakes & Cookies</a>
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse tabDiv">
+					<ul class="nav navbar-nav">
+						<li class="headerTabs tabWidth">
+							<a href="home.jsp">Home</a>
+						</li>
+						<li class="headerTabs tabWidth">
+							<a href="business.html">Business</a>
+						</li>
+						<li class="headerTabs tabWidth">
+							<a href="order-form.html">New Order</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="bodyContainer">
+		<h1 id="mainHeader" class="allura tableHeader">Current Orders</h1>
+		<ul class="tab">
+			<li>
+				<a href="#" class="tablinks" onclick="openTab(event, 'orderTable')">Table</a>
+			</li>
+			<li>
+				<a href="#" class="tablinks" onclick="openTab(event, 'calendar')">Calendar</a>
+			</li>
+		</ul>
+		<table id="orderTable" class="tabcontent">
+			<tr class="tableHeaders">
+				<th class="headerItems">Name</th>
+				<th class="headerItems">Date</th>
+				<th class="headerItems">Item(s)</th>
+				<th class="headerItems">Comments</th>
+			</tr>
+			<tr>
+				<td class="name">
+					<a href="">Betsy Horton</a>
+				</td>
+				<td>12/16/15</td>
+				<td>Wedding Cake</td>
+				<td>Cake for Betsy</td>
+			</tr>
+			<tr>
+				<td class="name">
+					<a>Jody Gaston</a>
+				</td>
+				<td>06/30/16</td>
+				<td>Cookies</td>
+				<td>For Abbie's birthday</td>
+			</tr>
+			<tr>
+				<td class="name">
+					<a href="">Keri Walker</a>
+				</td>
+				<td>03/07/2016</td>
+				<td>Birthday Cake</td>
+				<td>Mac's 11th Birthday</td>
+			</tr>
+		</table>
+
+		<div id="calendar" class="tabcontent">
+			<iframe
+				src="https://calendar.google.com/calendar/embed?src=pslagle2012%40gmail.com&ctz=America/New_York"
+				style="border: 0" frameborder="0" scrolling="no"></iframe>
+		</div>
+	</div>
+	</body>
+</html>
