@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,10 +45,10 @@ page via file:// -->
 							<a href="home.jsp">Home</a>
 						</li>
 						<li class="headerTabs tabWidth">
-							<a href="business.html">Business</a>
+							<a href="business.jsp">Business</a>
 						</li>
 						<li class="headerTabs tabWidth">
-							<a href="order-form.html">New Order</a>
+							<a href="order-form.jsp">New Order</a>
 						</li>
 					</ul>
 				</div>
@@ -72,8 +73,10 @@ page via file:// -->
 				<th class="headerItems">Item(s)</th>
 				<th class="headerItems">Comments</th>
 			</tr>
+			
+			<c:forEach>
 			<tr>
-				<td class="name">
+			<td class="name">
 					<a href="">Betsy Horton</a>
 				</td>
 				<td>12/16/15</td>
@@ -96,6 +99,8 @@ page via file:// -->
 				<td>Birthday Cake</td>
 				<td>Mac's 11th Birthday</td>
 			</tr>
+			</c:forEach>
+				
 		</table>
 
 		<div id="calendar" class="tabcontent">

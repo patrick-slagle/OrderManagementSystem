@@ -20,7 +20,7 @@ import java.sql.*;
 public class LoginValidationServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-    private User user;
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -40,10 +40,10 @@ public class LoginValidationServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		if(dbm.validLogin(username, password)) {
-			rd = request.getRequestDispatcher("home.html");
+			rd = request.getRequestDispatcher("home.jsp");
 			rd.forward(request, response);
 		} else {
-			rd = request.getRequestDispatcher("redirect.html");
+			rd = request.getRequestDispatcher("redirect.jsp");
 			rd.forward(request, response);
 		}
 	}

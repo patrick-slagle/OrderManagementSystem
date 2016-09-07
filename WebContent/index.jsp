@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +11,8 @@
 
 <body>
 	<div id="main" class="container">
-		<form name="loginform" id="loginform" method=POST action="homepage.do"
-			class="wpl-track-me">
+		<form name="loginform" id="loginform" method=POST 
+		action="homepage.do"  class="wpl-track-me">
 			<p class="login-username">
 				<input type="text" name="username" id="user_login" class="input"
 					placeholder="Email Address" value="" size="20" />
@@ -24,7 +24,7 @@
 			</p>
 			<p class="login-submit">
 				<input type="submit" name="wp-submit" id="wp-submit"
-					class="button-primary" value="Log in" submit="process-login.jsp" />
+					class="button-primary" value="Log in" />
 				<input type="hidden" name="redirect_to" value="#" />
 			</p>
 		</form>
