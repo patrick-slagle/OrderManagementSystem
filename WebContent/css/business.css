@@ -65,7 +65,7 @@ body, html {
 
 .charts {
 	width: 80%;
-	height: 35%;
+	height: 70%;
 	border: 1px solid blue;
 	overflow: hidden;
 	margin: auto;
@@ -77,16 +77,16 @@ body, html {
 .pieChartDiv {
 	padding: 0;
 	float: right;
-	width: 50%;
-	height: 100%;
-	border-left: 1px solid white;
+	width: 100%;
+	height: 50%;
+	border-bottom: 1px solid white;
 }
 
 .lineChartDiv {
 	padding: 0;
 	float: left;
-	width: 50%;
-	height: 100%;
+	width: 100%;
+	height: 50%;
 }
 
 #piechart {
@@ -103,7 +103,7 @@ body, html {
 
 .sales {
 	width: 80%;
-	height: 45%;
+	height: 70%;
 	border: 1px solid blue;
 	overflow: hidden;
 	margin: auto;
@@ -117,7 +117,8 @@ body, html {
 
 .sales table {
 	margin: auto;
-	width: 80%;
+	width: 95%;
+	height: 95%;
 	table-layout: fixed;
 }
 
@@ -140,37 +141,32 @@ body, html {
 	padding: 8px;
 	margin: auto;
 	width: 100%;
-	height: 20px;
+	height: 10px;
 	text-align: center;
 }
 
-@media only screen and (max-width: 460px) {
+@media only screen and (min-width: 900px) {
 	.charts {
 		width: 80%;
-		height: 70%;
+		height: 35%;
 	}
 	.pieChartDiv {
-		width: 100%;
-		height: 50%;
-		border: none;
-		border-bottom: 1px solid white;
+		width: 50%;
+		height: 100%;
+		border-right: 1px solid white;
 	}
 	.lineChartDiv {
-		width: 100%;
-		height: 50%;
+		width: 50%;
+		height: 100%;
 	}
 	.sales {
 		width: 80%;
 		height: 70%;
 	}
 	.sales table {
-		width: 95%;
-		height: 95%;
-	}
-	.sales table th {
-		font-size: 1.7em;
+		width: 80%;
 	}
 	.sales table td {
-		height: 10px;
+		height: 20px;
 	}
 }

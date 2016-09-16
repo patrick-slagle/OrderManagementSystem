@@ -2,19 +2,35 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>OrderManagementSystem</display-name>
   <servlet>
-    <servlet-name>CookieStore</servlet-name>
-    <servlet-class>org.patrickslagle.CookieStore</servlet-class>
+    <servlet-name>UserCreationServlet</servlet-name>
+    <servlet-class>org.patrickslagle.controller.UserCreationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CookieStore</servlet-name>
-    <url-pattern>/checkcookie.do</url-pattern>
+    <servlet-name>UserCreationServlet</servlet-name>
+    <url-pattern>/create-user.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>SaveOrderServlet</servlet-name>
+    <servlet-class>org.patrickslagle.controller.SaveOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaveOrderServlet</servlet-name>
+    <url-pattern>/save-order.do</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>GetOrderServlet</servlet-name>
+    <servlet-class>org.patrickslagle.controller.GetOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetOrderServlet</servlet-name>
+    <url-pattern>/get-order</url-pattern>
+    </servlet-mapping>
   <servlet>
     <servlet-name>LoginValidationServlet</servlet-name>
     <servlet-class>org.patrickslagle.controller.LoginValidationServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginValidationServlet</servlet-name>
-    <url-pattern>/homepage.do</url-pattern>
+    <url-pattern>/validate.do</url-pattern>
   </servlet-mapping>
 </web-app>

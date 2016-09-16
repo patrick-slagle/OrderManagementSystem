@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.patrickslagle.model.DatabaseManager;
+import org.patrickslagle.model.LoginManager;
 
 import java.sql.*;
 
@@ -18,7 +19,6 @@ import java.sql.*;
  */
 @WebServlet("/FormValidation")
 public class LoginValidationServlet extends HttpServlet {
-
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -28,18 +28,19 @@ public class LoginValidationServlet extends HttpServlet {
 		super();
 	}
 
-        /**
+	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-						  throws ServletException, IOException {
-		DatabaseManager dbm = new DatabaseManager();
-		RequestDispatcher rd;
+			throws ServletException, IOException {
+		LoginManager lm = new LoginManager();
+		RequestDispatcher rd = null;;
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
-		if(dbm.validLogin(username, password)) {
+
+		if (lm.validate(username, password)) {
 			rd = request.getRequestDispatcher("home.jsp");
 			rd.forward(request, response);
 		} else {
@@ -47,5 +48,4 @@ public class LoginValidationServlet extends HttpServlet {
 			rd.forward(request, response);
 		}
 	}
-	
 }

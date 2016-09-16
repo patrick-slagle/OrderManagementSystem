@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
 <meta charset=UTF-8 />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,7 +16,7 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="css/new-form.css" />
+<link rel="stylesheet" href="css/register.css" />
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -29,10 +30,10 @@ page via file:// -->
 <script
 	src="https://oss.maxcdn.com/libs/respond.js/
 1.4.2/respond.min.js"></script>
-<title>Order Form</title>
+
+<title>Register User</title>
 </head>
 <body>
-
 	<%-- header --%>
 
 	<jsp:include page="header.jsp" />
@@ -40,31 +41,31 @@ page via file:// -->
 	<%-- main body --%>
 
 	<div class="headerDiv">
-		<h1>New Order</h1>
+		<h1>User Registration</h1>
 	</div>
 
 	<div class="contentDiv">
 
-		<form class="orderForm" method=POST action="save-order.do">
-			<input name="first-name" class="topBotInput" type="text" placeholder="First Name" />
-			<input name="last-name" class="topBotInput" id="lastName" type="text"
-				placeholder="Last Name" />
-			<input name="phone" class="topBotInput" id="phoneNumber" type="text"
-				placeholder="Phone" />
+		<form class="orderForm" method=POST action="create-user.do">
+			<input name="first-name" class="twoCenterInput" type="text"
+				placeholder="First Name" />
+			<input class="twoCenterInput" name="last-name" id="lastName"
+				type="text" placeholder="Last Name" />
+			<input class="centerInput" name="email" id="email" type="text"
+				placeholder="Email" />
 			<br>
-			<input name="email" class="twoCenterInput" type="text" placeholder="Email Address" />
-			<input name="due-date" class="twoCenterInput" id="dueDate" type="text"
-				placeholder="Order Due Date" />
+			<input class="twoCenterInput" name="password" id="password"
+				type="text" placeholder="Password" />
+			<input class="twoCenterInput" name="re-enter-pw" id="re-enter" type="text"
+				placeholder="Re-enter Password" />
 			<br>
 			<br>
-			<input name="product" class="centerInput" type="text" placeholder="Product Type " />
-			<br>
-			<textarea name="comments" class="centerInput" id="comments" placeholder="Comments"></textarea>
-
+			<input class="centerInput" id="passcode" type="text"
+				placeholder="Enter Passcode" />
 			<br>
 			<input class="submit" type="submit" value="submit" />
 		</form>
-	</div>
 
+	</div>
 </body>
 </html>

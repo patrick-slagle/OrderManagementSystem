@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/home.css">
@@ -26,6 +29,8 @@ page via file:// -->
 1.4.2/respond.min.js"></script>
 
 </head>
+<body>
+<jsp:include page="/get-order"/>
 	<div class="headerContainer">
 		<div class="navbar navbar-default padding">
 			<div class="header">
@@ -73,34 +78,18 @@ page via file:// -->
 				<th class="headerItems">Item(s)</th>
 				<th class="headerItems">Comments</th>
 			</tr>
-			
-			<c:forEach>
-			<tr>
-			<td class="name">
-					<a href="">Betsy Horton</a>
-				</td>
-				<td>12/16/15</td>
-				<td>Wedding Cake</td>
-				<td>Cake for Betsy</td>
-			</tr>
-			<tr>
-				<td class="name">
-					<a>Jody Gaston</a>
-				</td>
-				<td>06/30/16</td>
-				<td>Cookies</td>
-				<td>For Abbie's birthday</td>
-			</tr>
-			<tr>
-				<td class="name">
-					<a href="">Keri Walker</a>
-				</td>
-				<td>03/07/2016</td>
-				<td>Birthday Cake</td>
-				<td>Mac's 11th Birthday</td>
-			</tr>
+
+			<c:forEach begin="1" end="3">
+				<tr>
+					<td class="name">
+						<a href="">[Sample Name]</a>
+					</td>
+					<td>[Sample Date]</td>
+					<td>[Sample Product]</td>
+					<td>[These are some sample comments.]</td>
+				</tr>
 			</c:forEach>
-				
+
 		</table>
 
 		<div id="calendar" class="tabcontent">
@@ -109,5 +98,5 @@ page via file:// -->
 				style="border: 0" frameborder="0" scrolling="no"></iframe>
 		</div>
 	</div>
-	</body>
+</body>
 </html>
