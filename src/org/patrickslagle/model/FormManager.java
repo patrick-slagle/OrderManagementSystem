@@ -21,7 +21,7 @@ public class FormManager {
 
 	private DatabaseManager dbm;
 
-	public void saveOrder(String firstName, String lastName, String phone, String email, String date, String product,
+	public void saveOrder(String firstName, String lastName, String phone, String email, String date, String product, String price,
 			String comments) {
 		dbm = new DatabaseManager();
 		PreparedStatement pstmt = null;
@@ -30,10 +30,10 @@ public class FormManager {
 
 		String sqlEmail = formatEmail(email);
 		java.sql.Date fmtDate = formatDate(date);
-
+		double fmtPrice = formatPrice(price);
 		try {
 			String sql = "INSERT INTO orders " + "(first_name , last_name , phone , email , "
-					+ "due_date, product_type , comments, id) " + "VALUES (?,?,?,?,?,?,?,?)";
+					+ "due_date, product_type , comments, id, price) " + "VALUES (?,?,?,?,?,?,?,?,?)";
 			pstmt = dbm.getConn().prepareStatement(sql);
 			pstmt.setString(1, firstName);
 			pstmt.setString(2, lastName);
@@ -43,6 +43,7 @@ public class FormManager {
 			pstmt.setString(6, product);
 			pstmt.setString(7, comments);
 			pstmt.setInt(8, (int) Math.random());
+			pstmt.setDouble(9, fmtPrice);
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -52,6 +53,10 @@ public class FormManager {
 		}
 	}
 
+	public double formatPrice(String price) {
+		return Double.parseDouble(price);
+	}
+	
 	public java.sql.Date formatDate(String date) {
 		Date fmtDate = null;
 		java.sql.Date sqlDate = null;
@@ -73,11 +78,11 @@ public class FormManager {
 	 * 
 	 * @return ArrayList
 	 */
-	public HashMap getOrders() {
+	public List getOrders() {
 		dbm = new DatabaseManager();
 		Statement stmt = null;
 		String sql = "SELECT * FROM orders";
-		HashMap<Integer, Order> orderMap = new HashMap<Integer, Order>();
+		List<Order> orderList = new ArrayList<Order>();
 
 		dbm.setUrl("jdbc:mysql://localhost:3306/pattycakes");
 		dbm.connect();
@@ -88,10 +93,9 @@ public class FormManager {
 			rs.beforeFirst();
 			int i = 0;
 			while (rs.next()) {
-				orderMap.put(i + 1,
-						new Order(rs.getString("first_name"), rs.getString("last_name"), rs.getString("phone"),
-								rs.getString("email"), rs.getString("due_date"), rs.getString("product_type"),
-								rs.getString("comments"), rs.getInt("id")));
+				orderList.add(new Order(rs.getString("first_name"), rs.getString("last_name"), rs.getString("phone"),
+						rs.getString("email"), rs.getString("due_date"), rs.getString("product_type"),
+						rs.getString("comments"), rs.getInt("id"), rs.getInt("price")));
 				i++;
 			}
 		} catch (SQLException e) {
@@ -99,7 +103,7 @@ public class FormManager {
 		} finally {
 			dbm.disconnect(stmt, dbm.getConn());
 		}
-		return orderMap;
+		return orderList;
 	}
 
 	public String formatEmail(String email) {

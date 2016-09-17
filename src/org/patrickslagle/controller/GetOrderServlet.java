@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.patrickslagle.model.FormManager;
+import org.patrickslagle.model.Order;
 
 /**
  * Servlet implementation class GetOrderServlet
@@ -36,8 +38,8 @@ public class GetOrderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		FormManager fm = new FormManager();
-		HashMap hm = fm.getOrders();
-		request.setAttribute("orders", hm);
+		List<Order> al = fm.getOrders();
+		request.setAttribute("orders", al);
 	}
 
 }

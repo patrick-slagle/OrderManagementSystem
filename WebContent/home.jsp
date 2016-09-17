@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <link href='https://fonts.googleapis.com/css?family=Allura'
 	rel='stylesheet' type='text/css'>
+<script src="js/OrdersWindow.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
@@ -30,7 +31,43 @@ page via file:// -->
 
 </head>
 <body>
-<jsp:include page="/get-order"/>
+
+	<%-- calling the servlet to get the list of orders --%>
+
+	<jsp:include page="/get-order" />
+
+	<%-- The modal window displayed when an order entry is selected --%>
+
+<div class="modalContainer" id="modal">
+<div class="modalContent">
+
+<table>
+
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Email</th>
+<th>Due Date</th>
+<th>Product</th>
+<th>Price</th>
+<th>Comments</th>
+</tr>
+
+<c:forEach var="orders" items="${ orders }">
+<tr>
+<td>${ orders.firstName } ${ orders.lastName }</td>
+<td>${ orders.phoneNumber }</td>
+<td>${ orders.email }</td>
+<td>${ orders.dueDate }</td>
+<td>${ orders.product }</td>
+<td>${ orders.price }</td>
+<td>${ orders.comments }</td>
+</tr>
+</c:forEach>
+
+</table>
+</div>
+</div>
 	<div class="headerContainer">
 		<div class="navbar navbar-default padding">
 			<div class="header">
@@ -78,13 +115,13 @@ page via file:// -->
 				<th class="headerItems">Item(s)</th>
 				<th class="headerItems">Comments</th>
 			</tr>
-			
+
 			<c:forEach var="orders" items="${ orders }">
 				<tr>
 					<td class="name">
-						<a href="">${ orders.1. }</a>
+						<a id="customerName" href="#">${ orders.firstName } ${ orders.lastName }</a>
 					</td>
-					<td>${ orders.date }</td>
+					<td>${ orders.dueDate }</td>
 					<td>${ orders.product }</td>
 					<td>${ orders.comments }</td>
 				</tr>
@@ -98,5 +135,21 @@ page via file:// -->
 				style="border: 0" frameborder="0" scrolling="no"></iframe>
 		</div>
 	</div>
+
+	<script>
+		var modal = document.getElementById('modal');
+		var order = document.getElementById('customerName');
+
+		order.onclick = function() {
+			modal.style.display = 'table';
+		}
+
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = 'none';
+			}
+		}
+	</script>
+
 </body>
 </html>

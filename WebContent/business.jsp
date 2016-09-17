@@ -128,17 +128,22 @@ page via file:// -->
 </head>
 <body>
 
-	<!-- header -->
+<%-- calling the servlet to get the list of orders --%>
+
+<jsp:include page="/get-order"/>
+
+	<%-- header --%>
 
 	<jsp:include page="header.jsp" />
 
-	<!-- main body -->
+	<%-- main body --%>
 
 	<div class="headerDiv">
 		<h1>Sales Data</h1>
 	</div>
 
-	<!-- we use google charts for data visualization -->
+	<%-- we use google charts for data visualization --%>
+	
 	<div class="charts">
 		<div class="pieChartDiv">
 			<div id="piechart"></div>
@@ -154,11 +159,11 @@ page via file:// -->
 				<th>Name</th>
 				<th>Price</th>
 			</tr>
-			<c:forEach begin="1" end="6">
+			<c:forEach var="orders" items="${ orders }">
 				<tr>
-					<td>[Sample Date]</td>
-					<td>[Sample Name]</td>
-					<td>[Sample Price]</td>
+					<td>${ orders.dueDate }</td>
+					<td>${ orders.firstName } ${ orders.lastName }</td>
+					<td>${ orders.price }</td>
 				</tr>
 			</c:forEach>
 		</table>

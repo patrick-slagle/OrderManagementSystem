@@ -46,21 +46,27 @@ page via file:// -->
 	<div class="contentDiv">
 
 		<form class="orderForm" method=POST action="save-order.do">
-			<input name="first-name" class="topBotInput" type="text" placeholder="First Name" />
+			<input name="first-name" class="topBotInput" type="text"
+				placeholder="First Name" />
 			<input name="last-name" class="topBotInput" id="lastName" type="text"
 				placeholder="Last Name" />
 			<input name="phone" class="topBotInput" id="phoneNumber" type="text"
 				placeholder="Phone" />
 			<br>
-			<input name="email" class="twoCenterInput" type="text" placeholder="Email Address" />
-			<input name="due-date" class="twoCenterInput" id="dueDate" type="text"
-				placeholder="Order Due Date" />
+			<input name="email" class="twoCenterInput" type="text"
+				placeholder="Email Address" />
+			<input name="due-date" class="twoCenterInput" id="dueDate"
+				type="text" placeholder="Order Due Date" />
 			<br>
 			<br>
-			<input name="product" class="centerInput" type="text" placeholder="Product Type " />
+			<input name="product" class="centerInput" type="text"
+				placeholder="Product Type " />
 			<br>
-			<textarea name="comments" class="centerInput" id="comments" placeholder="Comments"></textarea>
-
+			<input name="price" class="centerInput" type="text"
+				placeholder="Price " />
+			<br>
+			<textarea name="comments" class="centerInput" id="comments"
+				placeholder="Comments"></textarea>
 			<br>
 			<input class="submit" type="submit" value="submit" />
 		</form>

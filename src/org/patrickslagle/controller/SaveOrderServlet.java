@@ -42,6 +42,7 @@ public class SaveOrderServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String dueDate = request.getParameter("due-date");
 		String product = request.getParameter("product");
+		String price = request.getParameter("price");
 		String comments = request.getParameter("comments");
 
 		String[] list = { firstName, lastName, phone, email, dueDate, product, comments };
@@ -58,7 +59,7 @@ public class SaveOrderServlet extends HttpServlet {
 			rd.forward(request, response);
 		} else {
 			FormManager fm = new FormManager();
-			fm.saveOrder(firstName, lastName, phone, email, dueDate, product, comments);
+			fm.saveOrder(firstName, lastName, phone, email, dueDate, product, price, comments);
 			rd = request.getRequestDispatcher("home.jsp");
 			rd.forward(request, response);
 		}
