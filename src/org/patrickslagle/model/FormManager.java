@@ -11,9 +11,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
+import java.util.Map;
 import java.sql.ResultSetMetaData;
 
 public class FormManager {
@@ -72,29 +73,25 @@ public class FormManager {
 	 * 
 	 * @return ArrayList
 	 */
-	public ArrayList<String> getOrder() {
+	public HashMap getOrders() {
 		dbm = new DatabaseManager();
 		Statement stmt = null;
 		String sql = "SELECT * FROM orders";
-		ArrayList<String> data = new ArrayList<String>();
+		HashMap<Integer, Order> orderMap = new HashMap<Integer, Order>();
 
 		dbm.setUrl("jdbc:mysql://localhost:3306/pattycakes");
 		dbm.connect();
 		try {
 			stmt = dbm.getConn().createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			ResultSetMetaData rsmd = rs.getMetaData();
-			int columns = rsmd.getColumnCount();
-			for(int i = 0; i < columns; i++) {
-				if(i < 1) {
-					System.out.println(" , ");
-				}
-			System.out.println(rs.getString(i));
-			}
-			String[] orderItems = { "first_name", "last_name", "phone", "email", "due_date", "product", "comments" };
+
+			rs.beforeFirst();
 			int i = 0;
 			while (rs.next()) {
-				data.add(rs.getString(orderItems[i + 1]));
+				orderMap.put(i + 1,
+						new Order(rs.getString("first_name"), rs.getString("last_name"), rs.getString("phone"),
+								rs.getString("email"), rs.getString("due_date"), rs.getString("product_type"),
+								rs.getString("comments"), rs.getInt("id")));
 				i++;
 			}
 		} catch (SQLException e) {
@@ -102,7 +99,7 @@ public class FormManager {
 		} finally {
 			dbm.disconnect(stmt, dbm.getConn());
 		}
-		return data;
+		return orderMap;
 	}
 
 	public String formatEmail(String email) {
@@ -122,7 +119,6 @@ public class FormManager {
 				}
 			}
 		}
-		System.out.println(list.toString());
 		return list.toString();
 	}
 

@@ -78,15 +78,15 @@ page via file:// -->
 				<th class="headerItems">Item(s)</th>
 				<th class="headerItems">Comments</th>
 			</tr>
-
-			<c:forEach begin="1" end="3">
+			
+			<c:forEach var="orders" items="${ orders }">
 				<tr>
 					<td class="name">
-						<a href="">[Sample Name]</a>
+						<a href="">${ orders.1. }</a>
 					</td>
-					<td>[Sample Date]</td>
-					<td>[Sample Product]</td>
-					<td>[These are some sample comments.]</td>
+					<td>${ orders.date }</td>
+					<td>${ orders.product }</td>
+					<td>${ orders.comments }</td>
 				</tr>
 			</c:forEach>
 
