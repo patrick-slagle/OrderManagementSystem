@@ -11,6 +11,7 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/home.css">
+<link rel="stylesheet" type="text/css" href="css/order-details.css">
 <link href='https://fonts.googleapis.com/css?family=Allura'
 	rel='stylesheet' type='text/css'>
 <script src="js/OrdersWindow.js"></script>
@@ -38,66 +39,37 @@ page via file:// -->
 
 	<%-- The modal window displayed when an order entry is selected --%>
 
-<div class="modalContainer" id="modal">
-<div class="modalContent">
+	<div class="modalContainer" id="modal">
+		<div class="modalContent">
 
-<table>
-
-<tr>
-<th>Name</th>
-<th>Phone</th>
-<th>Email</th>
-<th>Due Date</th>
-<th>Product</th>
-<th>Price</th>
-<th>Comments</th>
-</tr>
-
-<c:forEach var="orders" items="${ orders }">
-<tr>
-<td>${ orders.firstName } ${ orders.lastName }</td>
-<td>${ orders.phoneNumber }</td>
-<td>${ orders.email }</td>
-<td>${ orders.dueDate }</td>
-<td>${ orders.product }</td>
-<td>${ orders.price }</td>
-<td>${ orders.comments }</td>
-</tr>
-</c:forEach>
-
-</table>
-</div>
-</div>
-	<div class="headerContainer">
-		<div class="navbar navbar-default padding">
-			<div class="header">
-				<div class="navbar-header padding">
-					<a href="" class="allura logo">PattyCakes & Cookies</a>
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".navbar-collapse">
-						<span class="sr-only">Toggle Navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-				<div class="collapse navbar-collapse tabDiv">
-					<ul class="nav navbar-nav">
-						<li class="headerTabs tabWidth">
-							<a href="home.jsp">Home</a>
-						</li>
-						<li class="headerTabs tabWidth">
-							<a href="business.jsp">Business</a>
-						</li>
-						<li class="headerTabs tabWidth">
-							<a href="order-form.jsp">New Order</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+			<form class="orderForm">
+				<input name="first-name" class="topBotInput" type="text"
+					value="${ orders[1].firstName }" readonly />
+				<input name="last-name" class="topBotInput" id="lastName"
+					type="text" value="${ orders.lastName }" readonly />
+				<input name="phone" class="topBotInput" id="phoneNumber" type="text"
+					value="${ orders.phoneNumber }" readonly />
+				<br>
+				<input name="email" class="twoCenterInput" type="text"
+					value="${ orders.email }" readonly />
+				<input name="due-date" class="twoCenterInput" id="dueDate"
+					value="${ orders.dueDate }" readonly />
+				<br>
+				<br>
+				<input name="product" class="centerInput" type="text"
+					value="${ orders.product }" readonly />
+				<br>
+				<input name="price" class="centerInput" type="text"
+					value="${ orders.price }" readonly />
+				<br>
+				<textarea name="comments" class="centerInput" id="comments"
+					value="${ orders.comments }" readonly></textarea>
+				<br>
 		</div>
 	</div>
-
+	
+	<jsp:include page="header.jsp"/>
+	
 	<div id="bodyContainer">
 		<h1 id="mainHeader" class="allura tableHeader">Current Orders</h1>
 		<ul class="tab">
@@ -141,6 +113,7 @@ page via file:// -->
 		var order = document.getElementById('customerName');
 
 		order.onclick = function() {
+			var customerName = order.parent().rowIndex();
 			modal.style.display = 'table';
 		}
 
@@ -149,6 +122,8 @@ page via file:// -->
 				modal.style.display = 'none';
 			}
 		}
+
+		
 	</script>
 
 </body>
