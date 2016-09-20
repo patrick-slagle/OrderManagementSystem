@@ -4,6 +4,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="lm" uri="LoginValidation"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +22,7 @@
 
 <body>
 	<div id="main" class="container">
-		<form id="loginform" method=POST 
-		class="wpl-track-me" action="validate.do">
+		<form id="loginform" method=POST class="wpl-track-me">
 			<p class="login-username">
 				<input type="text" name="username" id="user_login" class="input"
 					placeholder="Email Address" value="" size="20" />
@@ -35,7 +37,19 @@
 					class="button-primary" value="Log in" />
 			</p>
 		</form>
-		<a href="register.jsp"><h1 id="register">New User?</h1></a>
+		<a href="register.jsp">
+			<h1 id="register">New User?</h1>
+		</a>
 	</div>
+
+	<c:if test="${ pageContext.request.method == 'POST' }">
+		<c:if test="${ lm.validate(username, password) }">
+			<jsp:include page="/set-cookies" />
+			<jsp:forward page="home.jsp" />
+		</c:if>
+		<script>
+			$('#main').append('Invalid login! Please try again');
+		</script>
+	</c:if>
 </body>
 </html>

@@ -44,7 +44,7 @@ public class LoginValidationServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("home.jsp");
 			rd.forward(request, response);
 		} else {
-			rd = request.getRequestDispatcher("redirect.jsp");
+			rd = request.getRequestDispatcher("invalid-user.jsp");
 			rd.forward(request, response);
 		}
 	}

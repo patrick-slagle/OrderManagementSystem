@@ -14,7 +14,6 @@
 <link rel="stylesheet" type="text/css" href="css/order-details.css">
 <link href='https://fonts.googleapis.com/css?family=Allura'
 	rel='stylesheet' type='text/css'>
-<script src="js/OrdersWindow.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
@@ -30,6 +29,32 @@ page via file:// -->
 	src="https://oss.maxcdn.com/libs/respond.js/
 1.4.2/respond.min.js"></script>
 
+<script>
+	window.onload = function() {
+		var modal = $('#modal');
+
+		$('#customerName').click(function(e) {
+			var name = $(e.target).text();
+			$.post('/get-order-data',{ data: name });
+		});
+	};
+	
+	//modal.style.display = 'table';
+
+	//table row data?
+	
+	/*
+	$('table tr:eq(' + row + ') td').each(function() {
+		alert(this).text();
+	});*/
+
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = 'none';
+		}
+	}
+</script>
+
 </head>
 <body>
 
@@ -43,33 +68,35 @@ page via file:// -->
 		<div class="modalContent">
 
 			<form class="orderForm">
-				<input name="first-name" class="topBotInput" type="text"
-					value="${ orders[1].firstName }" readonly />
+				<input name="first-name" class="topBotInput" type="text" value=""
+					readonly />
 				<input name="last-name" class="topBotInput" id="lastName"
-					type="text" value="${ orders.lastName }" readonly />
+					type="text" value="" readonly />
 				<input name="phone" class="topBotInput" id="phoneNumber" type="text"
-					value="${ orders.phoneNumber }" readonly />
+					value="" readonly />
 				<br>
-				<input name="email" class="twoCenterInput" type="text"
-					value="${ orders.email }" readonly />
-				<input name="due-date" class="twoCenterInput" id="dueDate"
-					value="${ orders.dueDate }" readonly />
+				<input name="email" class="twoCenterInput" type="text" value=""
+					readonly />
+				<input name="due-date" class="twoCenterInput" id="dueDate" value=""
+					readonly />
 				<br>
 				<br>
-				<input name="product" class="centerInput" type="text"
-					value="${ orders.product }" readonly />
+				<input name="product" class="centerInput" type="text" value=""
+					readonly />
 				<br>
-				<input name="price" class="centerInput" type="text"
-					value="${ orders.price }" readonly />
+				<input name="price" class="centerInput" type="text" value=""
+					readonly />
 				<br>
-				<textarea name="comments" class="centerInput" id="comments"
-					value="${ orders.comments }" readonly></textarea>
+				<textarea name="comments" class="centerInput" id="comments" value=""
+					readonly></textarea>
 				<br>
 		</div>
 	</div>
-	
-	<jsp:include page="header.jsp"/>
-	
+
+	<%-- header --%>
+
+	<jsp:include page="header.jsp" />
+
 	<div id="bodyContainer">
 		<h1 id="mainHeader" class="allura tableHeader">Current Orders</h1>
 		<ul class="tab">
@@ -107,24 +134,6 @@ page via file:// -->
 				style="border: 0" frameborder="0" scrolling="no"></iframe>
 		</div>
 	</div>
-
-	<script>
-		var modal = document.getElementById('modal');
-		var order = document.getElementById('customerName');
-
-		order.onclick = function() {
-			var customerName = order.parent().rowIndex();
-			modal.style.display = 'table';
-		}
-
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = 'none';
-			}
-		}
-
-		
-	</script>
 
 </body>
 </html>

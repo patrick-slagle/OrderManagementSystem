@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd" version="2.0">
+	<tlib-version>1.2</tlib-version>
+	<uri>LoginValidation</uri>
+	<function>
+		<name>validate</name>
+		<function-class>org.patrickslagle.model.LoginManager</function-class>
+		<function-signature>
+			boolean validate(String username, String password)
+		</function-signature>
+	</function>
+</taglib>

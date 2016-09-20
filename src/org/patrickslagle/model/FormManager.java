@@ -53,24 +53,22 @@ public class FormManager {
 		}
 	}
 
-	public double formatPrice(String price) {
+	private double formatPrice(String price) {
+		System.out.println(Double.parseDouble(price));
 		return Double.parseDouble(price);
 	}
 	
-	public java.sql.Date formatDate(String date) {
-		Date fmtDate = null;
-		java.sql.Date sqlDate = null;
+	private java.sql.Date formatDate(String date) { 
+		java.sql.Date formattedDate = null;
 		try {
-			DateFormat df = new SimpleDateFormat("MM/DD/YYYY");
-			fmtDate = (Date) df.parse(date);
-			sqlDate = new java.sql.Date(fmtDate.getTime());
+		 formattedDate = new java.sql.Date(new SimpleDateFormat("MM/dd/yyyy").parse(date).getTime());
 		} catch (ParseException e) {
 			System.out.println("Please use date format 'MM/DD/YYYY'");
 		} catch (Exception e) {
 			System.out.println("Error: ");
 			e.printStackTrace();
 		}
-		return sqlDate;
+		return formattedDate;
 	}
 
 	/**
@@ -95,7 +93,7 @@ public class FormManager {
 			while (rs.next()) {
 				orderList.add(new Order(rs.getString("first_name"), rs.getString("last_name"), rs.getString("phone"),
 						rs.getString("email"), rs.getString("due_date"), rs.getString("product_type"),
-						rs.getString("comments"), rs.getInt("id"), rs.getInt("price")));
+						rs.getString("comments"), rs.getInt("id"), rs.getDouble("price")));
 				i++;
 			}
 		} catch (SQLException e) {
@@ -106,7 +104,7 @@ public class FormManager {
 		return orderList;
 	}
 
-	public String formatEmail(String email) {
+	private String formatEmail(String email) {
 
 		List list = Arrays.asList(email.split(","));
 		for (int i = 0; i < list.size(); i++) {
@@ -126,6 +124,24 @@ public class FormManager {
 		return list.toString();
 	}
 
+	public void getOrderByName(String name) {
+		dbm = new DatabaseManager();
+		PreparedStatement pstmt = null;
+		dbm.setUrl("jdbc:mysql://localhost:3306/pattycakes");
+		dbm.connect();
+		
+		String firstName = name.split("([^\\s]+)").toString();
+		String lastName = name.split("\\s(.*)").toString();
+		System.out.println(firstName);
+		System.out.println(lastName);
+
+		
+			String sql = "SELECT * FROM orders WHERE first_name = '";
+		
+			
+		
+	}
+	
 	public void createUser(String firstName, String lastName, String email, String password) {
 		dbm = new DatabaseManager();
 		PreparedStatement pstmt = null;

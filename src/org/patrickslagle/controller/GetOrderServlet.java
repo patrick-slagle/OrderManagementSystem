@@ -40,6 +40,23 @@ public class GetOrderServlet extends HttpServlet {
 		FormManager fm = new FormManager();
 		List<Order> al = fm.getOrders();
 		request.setAttribute("orders", al);
+		
+		ArrayList<Double> prices = new ArrayList<Double>();
+		for(int i = 0; i < al.size(); i++) {
+			double price = al.get(i).getPrice();
+			prices.add(price);
+		}
+		double priceTotal = priceTotal(prices);
+		request.setAttribute("priceTotal", priceTotal);
+
 	}
 
+	public double priceTotal(ArrayList<Double> prices) {
+		double total = 0.0;
+		for(int i = 0; i < prices.size(); i++) {
+			total = prices.get(i) + total;
+		}
+		return total;
+	}
+	
 }

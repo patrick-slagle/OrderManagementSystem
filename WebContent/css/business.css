@@ -107,19 +107,19 @@ body, html {
 	border: 1px solid blue;
 	overflow: hidden;
 	margin: auto;
-	margin-top: 20px;
 	margin-bottom: 20px;
-	padding-top: 30px;
 	background: #CFC3F8;
 	box-shadow: 10px 10px 5px #888888;
 	padding-top: 40px;
 }
 
 .sales table {
-	margin: auto;
 	width: 95%;
-	height: 95%;
 	table-layout: fixed;
+}
+
+#dataTable {
+	padding-top: 5%;
 }
 
 .sales table tr:nth-child(even) {
@@ -127,13 +127,15 @@ body, html {
 }
 
 .sales table th {
-	background: #4EAFCD;
+	width: 100%;
+	height: 20px; background : #4EAFCD;
 	color: white;
 	border: 1px solid #ddd;
 	padding: 8px;
 	text-align: center;
 	font-size: 1.7em;
 	font-family: Veranda, sans-serif;
+	background: #4EAFCD;
 }
 
 .sales table td {

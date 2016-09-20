@@ -17,14 +17,14 @@
     <servlet-name>SaveOrderServlet</servlet-name>
     <url-pattern>/save-order.do</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>GetOrderServlet</servlet-name>
     <servlet-class>org.patrickslagle.controller.GetOrderServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GetOrderServlet</servlet-name>
     <url-pattern>/get-order</url-pattern>
-    </servlet-mapping>
+  </servlet-mapping>
   <servlet>
     <servlet-name>LoginValidationServlet</servlet-name>
     <servlet-class>org.patrickslagle.controller.LoginValidationServlet</servlet-class>
@@ -32,5 +32,21 @@
   <servlet-mapping>
     <servlet-name>LoginValidationServlet</servlet-name>
     <url-pattern>/validate.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>SetCookies</servlet-name>
+    <servlet-class>org.patrickslagle.controller.SetCookies</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SetCookies</servlet-name>
+    <url-pattern>/set-cookies</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>GetSingleOrderServlet</servlet-name>
+    <servlet-class>org.patrickslagle.controller.GetSingleOrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetSingleOrderServlet</servlet-name>
+    <url-pattern>/get-order-data</url-pattern>
   </servlet-mapping>
 </web-app>

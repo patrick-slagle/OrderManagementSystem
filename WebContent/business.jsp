@@ -153,7 +153,7 @@ page via file:// -->
 		</div>
 	</div>
 	<div class="sales">
-		<table id="dataTable">
+		<table id="dataTable" align="center">
 			<tr>
 				<th>Date</th>
 				<th>Name</th>
@@ -167,12 +167,12 @@ page via file:// -->
 				</tr>
 			</c:forEach>
 		</table>
-		<table id="total">
+		<table id="total" align="center">
 			<tr>
 				<th>Total</th>
 			</tr>
 			<tr>
-				<td>[Sample Total]</td>
+				<td>${ priceTotal }</td>
 			</tr>
 		</table>
 	</div>
