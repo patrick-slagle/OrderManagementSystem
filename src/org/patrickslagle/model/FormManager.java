@@ -124,22 +124,18 @@ public class FormManager {
 		return list.toString();
 	}
 
-	public void getOrderByName(String name) {
-		dbm = new DatabaseManager();
-		PreparedStatement pstmt = null;
-		dbm.setUrl("jdbc:mysql://localhost:3306/pattycakes");
-		dbm.connect();
+	public void getOrderByName(String name, ArrayList al) {
 		
 		String firstName = name.split("([^\\s]+)").toString();
 		String lastName = name.split("\\s(.*)").toString();
 		System.out.println(firstName);
-		System.out.println(lastName);
-
+		System.out.println(lastName);	
 		
-			String sql = "SELECT * FROM orders WHERE first_name = '";
-		
-			
-		
+		for(int i = 0; i < al.size(); i++) {
+			/*if(firstName.equals(al.get(i).getFirstName())) {
+				
+			}*/
+		}
 	}
 	
 	public void createUser(String firstName, String lastName, String email, String password) {

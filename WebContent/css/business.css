@@ -118,12 +118,17 @@ body, html {
 	table-layout: fixed;
 }
 
-#dataTable {
+#orderTable {
 	padding-top: 5%;
 }
 
 .sales table tr:nth-child(even) {
 	background-color: #f2f2f2;
+}
+
+.sales table tr:hover {
+	color: white;
+	background: #0034AF;
 }
 
 .sales table th {

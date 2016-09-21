@@ -13,6 +13,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/home/pslagle12/java/tools/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/pslagle12/java/tools/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/pslagle12/Downloads/javax.json-api-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/pslagle12/Downloads/json-20160810.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/pslagle12/Downloads/gson-master/gson/target/gson-2.7.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

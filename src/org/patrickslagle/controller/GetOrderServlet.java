@@ -1,20 +1,25 @@
 package org.patrickslagle.controller;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.json.JsonArray;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.patrickslagle.model.FormManager;
 import org.patrickslagle.model.Order;
+
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class GetOrderServlet
@@ -39,10 +44,11 @@ public class GetOrderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		FormManager fm = new FormManager();
 		List<Order> al = fm.getOrders();
-		request.setAttribute("orders", al);
-		
+		HttpSession session = request.getSession();
+		session.setAttribute("orders", al);
+
 		ArrayList<Double> prices = new ArrayList<Double>();
-		for(int i = 0; i < al.size(); i++) {
+		for (int i = 0; i < al.size(); i++) {
 			double price = al.get(i).getPrice();
 			prices.add(price);
 		}
@@ -53,10 +59,10 @@ public class GetOrderServlet extends HttpServlet {
 
 	public double priceTotal(ArrayList<Double> prices) {
 		double total = 0.0;
-		for(int i = 0; i < prices.size(); i++) {
+		for (int i = 0; i < prices.size(); i++) {
 			total = prices.get(i) + total;
 		}
 		return total;
 	}
-	
+
 }

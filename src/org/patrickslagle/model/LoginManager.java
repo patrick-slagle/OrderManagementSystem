@@ -13,17 +13,17 @@ public class LoginManager {
 	 * @param loginPassword
 	 * @return boolean
 	 */
-	public boolean validate(String email, String password) {
+	public static boolean validate(String username, String password) {
+		System.out.println("Servlet");
 		DatabaseManager dbm = new DatabaseManager();
 		boolean valid = false;
 		ResultSet rs = null;
 		Statement stmt = null;
 		dbm.setUrl("jdbc:mysql://localhost:3306/pattycakes");
 		dbm.connect();
-
 		try {
 			stmt = dbm.getConn().createStatement();
-			String sql = "SELECT * FROM users WHERE email = '" + email + "' AND password = '" + password + "'";
+			String sql = "SELECT * FROM users WHERE email = '" + username + "' AND password = '" + password + "'";
 			rs = stmt.executeQuery(sql);
 			if (rs.next()) {
 				valid = true;

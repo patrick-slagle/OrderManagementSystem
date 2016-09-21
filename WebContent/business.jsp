@@ -17,6 +17,7 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/business.css">
+<link rel="stylesheet" type="text/css" href="css/order-details.css">
 
 <!-- javascript links -->
 
@@ -37,6 +38,7 @@ page via file:// -->
 
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="js/main.js"></script>
 <script type="text/javascript">
 	google.charts.load('43', {
 		packages : [ 'corechart' ]
@@ -128,13 +130,19 @@ page via file:// -->
 </head>
 <body>
 
-<%-- calling the servlet to get the list of orders --%>
+	<%-- calling the servlet to get the list of orders --%>
 
-<jsp:include page="/get-order"/>
+	<jsp:include page="/get-order" />
 
 	<%-- header --%>
 
 	<jsp:include page="header.jsp" />
+
+	<%-- Where the modal window will be created --%>
+	
+	<div class="modalContainer" id="modal">
+		<div class="modalContent"></div>
+	</div>
 
 	<%-- main body --%>
 
@@ -143,7 +151,7 @@ page via file:// -->
 	</div>
 
 	<%-- we use google charts for data visualization --%>
-	
+
 	<div class="charts">
 		<div class="pieChartDiv">
 			<div id="piechart"></div>
@@ -153,7 +161,7 @@ page via file:// -->
 		</div>
 	</div>
 	<div class="sales">
-		<table id="dataTable" align="center">
+		<table id="orderTable" align="center">
 			<tr>
 				<th>Date</th>
 				<th>Name</th>
@@ -162,7 +170,7 @@ page via file:// -->
 			<c:forEach var="orders" items="${ orders }">
 				<tr>
 					<td>${ orders.dueDate }</td>
-					<td>${ orders.firstName } ${ orders.lastName }</td>
+					<td>${ orders.firstName }${ orders.lastName }</td>
 					<td>${ orders.price }</td>
 				</tr>
 			</c:forEach>

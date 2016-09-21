@@ -29,31 +29,8 @@ page via file:// -->
 	src="https://oss.maxcdn.com/libs/respond.js/
 1.4.2/respond.min.js"></script>
 
-<script>
-	window.onload = function() {
-		var modal = $('#modal');
-
-		$('#customerName').click(function(e) {
-			var name = $(e.target).text();
-			$.post('/get-order-data',{ data: name });
-		});
-	};
-	
-	//modal.style.display = 'table';
-
-	//table row data?
-	
-	/*
-	$('table tr:eq(' + row + ') td').each(function() {
-		alert(this).text();
-	});*/
-
-	window.onclick = function(event) {
-		if (event.target == modal) {
-			modal.style.display = 'none';
-		}
-	}
-</script>
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/main.js"></script>
 
 </head>
 <body>
@@ -62,41 +39,18 @@ page via file:// -->
 
 	<jsp:include page="/get-order" />
 
-	<%-- The modal window displayed when an order entry is selected --%>
-
-	<div class="modalContainer" id="modal">
-		<div class="modalContent">
-
-			<form class="orderForm">
-				<input name="first-name" class="topBotInput" type="text" value=""
-					readonly />
-				<input name="last-name" class="topBotInput" id="lastName"
-					type="text" value="" readonly />
-				<input name="phone" class="topBotInput" id="phoneNumber" type="text"
-					value="" readonly />
-				<br>
-				<input name="email" class="twoCenterInput" type="text" value=""
-					readonly />
-				<input name="due-date" class="twoCenterInput" id="dueDate" value=""
-					readonly />
-				<br>
-				<br>
-				<input name="product" class="centerInput" type="text" value=""
-					readonly />
-				<br>
-				<input name="price" class="centerInput" type="text" value=""
-					readonly />
-				<br>
-				<textarea name="comments" class="centerInput" id="comments" value=""
-					readonly></textarea>
-				<br>
-		</div>
-	</div>
-
 	<%-- header --%>
 
 	<jsp:include page="header.jsp" />
 
+	<%-- Where the modal window will be created --%>
+	
+	<div class="modalContainer" id="modal">
+		<div class="modalContent"></div>
+	</div>
+	
+	<%-- main body --%>
+		
 	<div id="bodyContainer">
 		<h1 id="mainHeader" class="allura tableHeader">Current Orders</h1>
 		<ul class="tab">
