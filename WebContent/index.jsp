@@ -44,7 +44,7 @@
 
 	<c:if test="${ pageContext.request.method == 'POST' }">
 	<% System.out.println("inside first test"); %>
-		<c:if test="${ lm.validate(username, password) }">
+		<c:if test="${ lm:validate(username, password) }">
 			<% System.out.println("Inside second test"); %>
 			<jsp:include page="/set-cookies" />
 			<jsp:forward page="home.jsp" />

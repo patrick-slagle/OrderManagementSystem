@@ -16,6 +16,7 @@
 	rel='stylesheet' type='text/css'>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/header.css">
 <link rel="stylesheet" type="text/css" href="css/business.css">
 <link rel="stylesheet" type="text/css" href="css/order-details.css">
 
@@ -40,10 +41,18 @@ page via file:// -->
 	src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="js/main.js"></script>
 <script type="text/javascript">
-	google.charts.load('43', {
+
+window.onload = function() {
+	var data = $('#orderData');
+	console.log(data[0].value);
+
+}
+
+google.charts.load('43', {
 		packages : [ 'corechart' ]
 	});
 	google.charts.setOnLoadCallback(drawChart);
+
 	function drawChart() {
 
 		var data = google.visualization.arrayToDataTable([
@@ -62,11 +71,10 @@ page via file:// -->
 				.getElementById('piechart'));
 
 		chart.draw(data, options);
-
+		
 		$(window).resize(function() {
 			drawChart();
 		});
-
 	}
 </script>
 <script>
@@ -134,15 +142,19 @@ page via file:// -->
 
 	<jsp:include page="/get-order" />
 
+	<jsp:include page="/convert-orders.do" />
+
 	<%-- header --%>
 
 	<jsp:include page="header.jsp" />
 
 	<%-- Where the modal window will be created --%>
-	
+
 	<div class="modalContainer" id="modal">
 		<div class="modalContent"></div>
 	</div>
+
+	<input type="hidden" value="${ sessionScope.jsonOrders }" id="orderData" />
 
 	<%-- main body --%>
 

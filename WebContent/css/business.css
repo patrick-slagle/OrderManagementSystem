@@ -9,50 +9,6 @@ body, html {
 	height: 100%;
 }
 
-.menubar {
-	background: #CFC3F8;
-	box-shadow: 5px 5px 2px #888888;
-}
-
-.menubar a#logo {@import
-	url('https://fonts.googleapis.com/css?family=Allura');width: 
-	 260px ; padding: 0 0 0 15px ; margin: 0; font-family: Allura,
-	sans-serif ; font-size: 35px ; color: #0034AF ;
-	
-}
-
-.menubar ul li a.menuItems {
-	display: inline-block;
-	text-decoration: none;
-}
-
-.menubar ul {
-	float: right;
-}
-
-.menubar ul li {
-	height: 100%;
-	width: 195px;
-	vertical-align: middle;
-	text-align: center;
-	line-height: 60px;
-	text-align: center;
-	font-size: 16px;
-	border-left: solid white 2px;
-	color: #332419;
-}
-
-.menubar ul li a.menuItems {
-	width: 100%;
-	height: 100%;
-}
-
-.menubar ul li a.menuItems:hover {
-	color: #332419;
-	text-decoration: none;
-	background-color: #f1f1f1;
-}
-
 .headerDiv {
 	width: 100%;
 }

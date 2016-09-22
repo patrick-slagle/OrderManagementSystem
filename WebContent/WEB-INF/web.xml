@@ -41,12 +41,20 @@
     <servlet-name>SetCookies</servlet-name>
     <url-pattern>/set-cookies</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>GetSingleOrderServlet</servlet-name>
     <servlet-class>org.patrickslagle.controller.GetSingleOrderServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>GetSingleOrderServlet</servlet-name>
     <url-pattern>/get-order-data</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>OrdersToJSONServlet</servlet-name>
+    <servlet-class>org.patrickslagle.controller.OrdersToJSONServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OrdersToJSONServlet</servlet-name>
+    <url-pattern>/convert-orders.do</url-pattern>
   </servlet-mapping>
 </web-app>
