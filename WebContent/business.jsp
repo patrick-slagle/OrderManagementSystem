@@ -25,6 +25,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/tabs.js"></script>
+<script src="js/jquery-3.1.0.min.js"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5
 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the
@@ -43,8 +44,11 @@ page via file:// -->
 <script type="text/javascript">
 
 window.onload = function() {
-	var data = $('#orderData');
-	console.log(data[0].value);
+$.get('OrdersToJSONServlet', function(responseText) {
+	var json = JSON.parse(responseText);   
+	console.log(responseText);
+	$.each(json, function(key, value) {console.log(value.product); })	
+});
 
 }
 
@@ -60,10 +64,10 @@ google.charts.load('43', {
 				[ 'Cupcakes', 2 ], [ 'Cookies', 2 ], [ 'Other', 2 ], ]);
 
 		var options = {
-			title : 'Product Sales',
+			'title' : 'Product Sales',
 			'legend' : 'left',
 			'is3D' : true,
-			backgroundColor : '#CFC3F8',
+			'backgroundColor' : '#CFC3F8',
 
 		};
 
@@ -142,8 +146,6 @@ google.charts.load('43', {
 
 	<jsp:include page="/get-order" />
 
-	<jsp:include page="/convert-orders.do" />
-
 	<%-- header --%>
 
 	<jsp:include page="header.jsp" />
@@ -153,8 +155,6 @@ google.charts.load('43', {
 	<div class="modalContainer" id="modal">
 		<div class="modalContent"></div>
 	</div>
-
-	<input type="hidden" value="${ sessionScope.jsonOrders }" id="orderData" />
 
 	<%-- main body --%>
 
@@ -182,7 +182,7 @@ google.charts.load('43', {
 			<c:forEach var="orders" items="${ orders }">
 				<tr>
 					<td>${ orders.dueDate }</td>
-					<td>${ orders.firstName }${ orders.lastName }</td>
+					<td>${ orders.firstName } ${ orders.lastName }</td>
 					<td>${ orders.price }</td>
 				</tr>
 			</c:forEach>

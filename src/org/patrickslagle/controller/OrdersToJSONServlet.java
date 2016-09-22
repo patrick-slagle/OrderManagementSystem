@@ -3,6 +3,9 @@ package org.patrickslagle.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,12 +40,10 @@ public class OrdersToJSONServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Object orders = request.getSession().getAttribute("orders");
-
+		String jsonString = "";
 		String json = new Gson().toJson(orders);
 		try {
-			ArrayList<String> jsonList = extractObjects(json);
-			HttpSession session = request.getSession();
-			session.setAttribute("jsonOrders", jsonList);
+			response.getWriter().write(json);
 		} catch (Exception e) {
 			System.out.println("problem parsing JSON");
 		}
@@ -91,6 +92,16 @@ public class OrdersToJSONServlet extends HttpServlet {
 			i++;
 		}
 		return result;
+	}
+
+	private String formatString(String s) {
+		List list = Arrays.asList(s);
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i) == "\"") {
+				list.add(i, "\\");
+			}
+		}
+		return list.toString();
 	}
 
 }
