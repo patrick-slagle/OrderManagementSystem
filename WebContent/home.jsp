@@ -19,7 +19,10 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/modal.js"></script>
 <script src="js/tabs.js"></script>
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5
 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the
@@ -29,10 +32,6 @@ page via file:// -->
 <script
 	src="https://oss.maxcdn.com/libs/respond.js/
 1.4.2/respond.min.js"></script>
-
-<script src="js/jquery-3.1.0.min.js"></script>
-<script src="js/main.js"></script>
-
 </head>
 <body>
 
@@ -72,9 +71,7 @@ page via file:// -->
 
 			<c:forEach var="orders" items="${ orders }">
 				<tr>
-					<td class="name">
-						<a id="customerName" href="#">${ orders.firstName } ${ orders.lastName }</a>
-					</td>
+					<td class="name">${ orders.firstName } ${ orders.lastName }</td>
 					<td>${ orders.dueDate }</td>
 					<td>${ orders.product }</td>
 					<td>${ orders.comments }</td>

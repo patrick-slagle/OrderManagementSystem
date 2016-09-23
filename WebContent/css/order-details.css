@@ -17,6 +17,7 @@
 }
 
 .modalContent {
+	top: 40%;
 	display: table-cell;
 	vertical-align: middle;
 		

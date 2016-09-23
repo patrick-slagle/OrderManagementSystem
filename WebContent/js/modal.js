@@ -1,6 +1,6 @@
 	window.onload = function() {
 		var modal = $('#modal');
-		
+		console.log($('#orderTable'));
 		$('#orderTable').find('tr').click(function() {
 			var rowIndex = $(this).index();
 			$.post('GetSingleOrder', {
