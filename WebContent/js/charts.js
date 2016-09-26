@@ -21,7 +21,6 @@ var twoDigitMonth = ((fullDate.getMonth().length + 1) === 1) ? (fullDate
 var lastMonth = '0' + (twoDigitMonth - 1);
 var twoMonthsAgo = '0' + (twoDigitMonth - 2);
 
-
 console.log(lastMonth + " " + twoMonthsAgo);
 
 window.onload = function() {
@@ -53,34 +52,33 @@ window.onload = function() {
 
 			switch (month) {
 			case lastMonth:
-				switch(value.product) {
+				switch (value.product) {
 				case 'cake':
 					cakesLastMonth++;
 				case 'cookies':
-				cookiesLastMonth++;
-				break;
+					cookiesLastMonth++;
+					break;
 				case 'cupcakes ':
-				cupcakesLastMonth++;
-				break;
+					cupcakesLastMonth++;
+					break;
 				default:
-				otherLastMonth++;
-				break;
+					otherLastMonth++;
+					break;
 				}
 			case twoMonthsAgo:
-				switch(value.product) {
+				switch (value.product) {
 				case 'cake':
 					cakesTwoMonthsAgo++;
 				case 'cookies':
-				cookiesTwoMonthsAgo++;
-				break;
+					cookiesTwoMonthsAgo++;
+					break;
 				case 'cupcakes ':
-				cupcakesTwoMonthsAgo++;
-				break;
+					cupcakesTwoMonthsAgo++;
+					break;
 				default:
-				otherTwoMonthsAgo++;
-				break;
+					otherTwoMonthsAgo++;
+					break;
 				}
-				console.log(cakesLastMonth);
 			}
 		});
 	});
@@ -97,8 +95,8 @@ function drawChart() {
 	piechart_data.addColumn('string', 'Product');
 	piechart_data.addColumn('number', 'Sold');
 
-	piechart_data.addRows([ [ 'Cake', cakes ], [ 'Cookies', cookies ], [ 'Cupcakes', cupcakes ],
-			[ 'Other', other ], ]);
+	piechart_data.addRows([ [ 'Cake', cakes ], [ 'Cookies', cookies ],
+			[ 'Cupcakes', cupcakes ], [ 'Other', other ], ]);
 
 	var piechart_options = {
 		'title' : 'Product Sales',
@@ -115,8 +113,10 @@ function drawChart() {
 
 	var barchart_data = new google.visualization.arrayToDataTable([
 			[ 'Product', 'Two Months Ago', 'Last Month' ],
-			[ 'Cakes', cakesTwoMonthsAgo, cakesLastMonth ], [ 'Cookies', cookiesTwoMonthsAgo, cookiesLastMonth ],
-			[ 'Cupcakes', cupcakesTwoMonthsAgo, cupcakesLastMonth ], [ 'Other', otherTwoMonthsAgo, otherLastMonth ], ]);
+			[ 'Cakes', cakesTwoMonthsAgo, cakesLastMonth ],
+			[ 'Cookies', cookiesTwoMonthsAgo, cookiesLastMonth ],
+			[ 'Cupcakes', cupcakesTwoMonthsAgo, cupcakesLastMonth ],
+			[ 'Other', otherTwoMonthsAgo, otherLastMonth ], ]);
 
 	var barchart_options = {
 		width : 600,
