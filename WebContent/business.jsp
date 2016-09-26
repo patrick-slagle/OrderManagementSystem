@@ -40,11 +40,12 @@ page via file:// -->
 	type="text/javascript"></script>
 
 <!-- for google charts -->
-
+'
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="js/modal.js" type="text/javascript"></script>
 <script src="js/charts.js" type="text/javascript"></script>
+
 </head>
 <body>
 
@@ -88,7 +89,7 @@ page via file:// -->
 			<c:forEach var="orders" items="${ orders }">
 				<tr>
 					<td>${ orders.dueDate }</td>
-					<td class="name">${ orders.firstName } ${ orders.lastName }</td>
+					<td>${ orders.firstName }${ orders.lastName }</td>
 					<td>${ orders.price }</td>
 				</tr>
 			</c:forEach>

@@ -1,4 +1,5 @@
-	window.onload = function() {
+	window.addEventListener('load', function() {
+		console.log('hi');
 		var modal = $('#modal');
 		console.log($('#orderTable'));
 		$('#orderTable').find('tr').click(function() {
@@ -10,7 +11,7 @@
 				modal[0].style.display = 'block';
 			}); 
 		});
-	};
+	});
 
 	window.onclick = function(event) {
 		if (event.target == modal) {

@@ -38,7 +38,7 @@ window.onload = function() {
 			case 'cookies':
 				cookies++;
 				break;
-			case 'cupcakes':
+			case 'cupcakes ':
 				cupcakes++
 				break;
 			default:
@@ -59,7 +59,7 @@ window.onload = function() {
 				case 'cookies':
 				cookiesLastMonth++;
 				break;
-				case 'cupcakes':
+				case 'cupcakes ':
 				cupcakesLastMonth++;
 				break;
 				default:
@@ -73,7 +73,7 @@ window.onload = function() {
 				case 'cookies':
 				cookiesTwoMonthsAgo++;
 				break;
-				case 'cupcakes':
+				case 'cupcakes ':
 				cupcakesTwoMonthsAgo++;
 				break;
 				default:
@@ -97,8 +97,8 @@ function drawChart() {
 	piechart_data.addColumn('string', 'Product');
 	piechart_data.addColumn('number', 'Sold');
 
-	piechart_data.addRows([ [ 'Cake', 3 ], [ 'Cookies', 1 ], [ 'Cupcakes', 1 ],
-			[ 'Other', 1 ], ]);
+	piechart_data.addRows([ [ 'Cake', cakes ], [ 'Cookies', cookies ], [ 'Cupcakes', cupcakes ],
+			[ 'Other', other ], ]);
 
 	var piechart_options = {
 		'title' : 'Product Sales',
@@ -115,7 +115,7 @@ function drawChart() {
 
 	var barchart_data = new google.visualization.arrayToDataTable([
 			[ 'Product', 'Two Months Ago', 'Last Month' ],
-			[ 'Cakes', cakesTwoMonthsAgo, cakesLastMonth ], [ 'Cookies', cookiesTwoMonthsAgo, CookiesLastMonth ],
+			[ 'Cakes', cakesTwoMonthsAgo, cakesLastMonth ], [ 'Cookies', cookiesTwoMonthsAgo, cookiesLastMonth ],
 			[ 'Cupcakes', cupcakesTwoMonthsAgo, cupcakesLastMonth ], [ 'Other', otherTwoMonthsAgo, otherLastMonth ], ]);
 
 	var barchart_options = {

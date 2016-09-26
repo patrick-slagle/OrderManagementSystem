@@ -14,7 +14,6 @@ public class LoginManager {
 	 * @return boolean
 	 */
 	public static boolean validate(String username, String password) {
-		System.out.println("Servlet");
 		DatabaseManager dbm = new DatabaseManager();
 		boolean valid = false;
 		ResultSet rs = null;
@@ -23,7 +22,7 @@ public class LoginManager {
 		dbm.connect();
 		try {
 			stmt = dbm.getConn().createStatement();
-			String sql = "SELECT * FROM users WHERE email = '" + username + "' AND password = '" + password + "'";
+			String sql = "SELECT * FROM users WHERE email = '[" + username + "]' AND password = '" + password + "'";
 			rs = stmt.executeQuery(sql);
 			if (rs.next()) {
 				valid = true;
