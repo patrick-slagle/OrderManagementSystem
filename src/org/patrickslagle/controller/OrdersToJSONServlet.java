@@ -40,7 +40,6 @@ public class OrdersToJSONServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Object orders = request.getSession().getAttribute("orders");
-		String jsonString = "";
 		String json = new Gson().toJson(orders);
 		try {
 			response.getWriter().write(json);

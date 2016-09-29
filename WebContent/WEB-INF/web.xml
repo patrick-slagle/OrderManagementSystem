@@ -23,7 +23,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>GetOrderServlet</servlet-name>
-    <url-pattern>/get-order</url-pattern>
+    <url-pattern>/get-orders</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>LoginValidationServlet</servlet-name>
@@ -55,6 +55,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>OrdersToJSONServlet</servlet-name>
-    <url-pattern>/convert-orders.do</url-pattern>
+    <url-pattern>/convert-orders</url-pattern>
   </servlet-mapping>
 </web-app>

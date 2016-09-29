@@ -22,6 +22,8 @@
 <script src="js/jquery-3.1.0.min.js"></script>
 <script src="js/modal.js"></script>
 <script src="js/tabs.js"></script>
+<script src="js/calendar.js" type="text/javascript"></script>
+
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5
 elements and media queries -->
@@ -37,7 +39,9 @@ page via file:// -->
 
 	<%-- calling the servlet to get the list of orders --%>
 
-	<jsp:include page="/get-order" />
+	<jsp:include page="/get-orders" />
+
+	<%-- converting the list to JSON (for use with javacript) --%>
 
 	<%-- header --%>
 
@@ -71,7 +75,7 @@ page via file:// -->
 
 			<c:forEach var="orders" items="${ orders }">
 				<tr>
-					<td class="name">${ orders.firstName } ${ orders.lastName }</td>
+					<td class="name">${ orders.firstName }${ orders.lastName }</td>
 					<td>${ orders.dueDate }</td>
 					<td>${ orders.product }</td>
 					<td>${ orders.comments }</td>

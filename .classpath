@@ -17,5 +17,6 @@
 	<classpathentry exported="true" kind="lib" path="/home/pslagle12/Downloads/javax.json-api-1.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="/home/pslagle12/Downloads/json-20160810.jar"/>
 	<classpathentry exported="true" kind="lib" path="/home/pslagle12/Downloads/gson-master/gson/target/gson-2.7.1.jar"/>
+	<classpathentry kind="lib" path="/home/pslagle12/junit-4.10.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

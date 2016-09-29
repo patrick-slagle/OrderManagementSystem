@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class SetCookies
@@ -30,9 +31,9 @@ public class SetCookies extends HttpServlet {
 		String user = request.getParameter("username");
 		String pwd = request.getParameter("password");
 		
-		Cookie userCookie = new Cookie("user", user);
-		Cookie passwordCookie = new Cookie("pwd", pwd);
-		System.out.println(userCookie + " " + passwordCookie);
+		HttpSession session = request.getSession();
+		request.setAttribute("username", user);;
+		request.setAttribute("password", pwd);
 	}
 
 }
