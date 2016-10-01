@@ -1,4 +1,11 @@
-package org.patrickslagle.controller;
+
+/**
+ * 
+ * <h1>Servlet to create a new user in the database.</h1>
+ * 
+ */
+
+package org.patrickslagle.controller.login;
 
 import java.io.IOException;
 
@@ -40,7 +47,6 @@ public class UserCreationServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String pass1 = request.getParameter("password");
 		String pass2 = request.getParameter("re-enter-pw");
-		
 		
 		if(fm.testPassword(pass1, pass2)) {
 			fm.createUser(firstName, lastName, email, pass1);

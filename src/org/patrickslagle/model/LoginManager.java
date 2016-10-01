@@ -1,3 +1,10 @@
+
+/**
+ * 
+ * <h1>Class used to validate user credentials upon login</h1>
+ * 
+ */
+
 package org.patrickslagle.model;
 
 import java.sql.ResultSet;
@@ -7,7 +14,7 @@ import java.sql.Statement;
 public class LoginManager {
 
 	/**
-	 * *******ADD DOC
+	 * validate user login credentials
 	 * 
 	 * @param loginUsername
 	 * @param loginPassword

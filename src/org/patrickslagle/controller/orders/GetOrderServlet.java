@@ -1,4 +1,13 @@
-package org.patrickslagle.controller;
+
+/**
+ * 
+ * <h1>Servlet for getting the data from all orders in the database</h1>
+ * 
+ * <h3>Returns a list of orders as a session attribute</h3>
+ * 
+ */
+
+package org.patrickslagle.controller.orders;
 
 
 import java.io.IOException;
@@ -57,6 +66,12 @@ public class GetOrderServlet extends HttpServlet {
 
 	}
 
+	/**
+	 * Gives us the total of all order prices
+	 * 
+	 * @param prices
+	 * @return
+	 */
 	public double priceTotal(ArrayList<Double> prices) {
 		double total = 0.0;
 		for (int i = 0; i < prices.size(); i++) {

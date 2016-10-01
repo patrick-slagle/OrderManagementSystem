@@ -4,6 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%-- we use the core library as well as the LoginManager class --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="lm" uri="/WEB-INF/login.tld"%>
 
@@ -42,9 +44,12 @@
 		</a>
 	</div>
 
+<%-- on form submission, we use JSTL to test for a valid user. 
+ 	JSTL is used rather than a servlet to make it easier to insert JQuery. --%>
+ 	
 	<c:if test="${ pageContext.request.method == 'POST' }">
 		<c:if test="${ lm:validate(param.username, param.password) }">
-			<jsp:include page="/set-cookies" />
+			<jsp:include page="/set-session.do" />
 			<jsp:forward page="home.jsp" />
 		</c:if>
 		<script>

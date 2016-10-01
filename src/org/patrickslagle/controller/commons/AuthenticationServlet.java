@@ -1,4 +1,12 @@
-package org.patrickslagle.controller;
+
+/**
+ * 
+ * <h1>Servlet for user authentication across sessions.</h1> 
+ * <h3>Essential class for security </h3>
+ * 
+ */
+
+package org.patrickslagle.controller.commons;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -31,6 +39,9 @@ public class AuthenticationServlet extends HttpServlet {
 		String requestedPage = request.getParameter(Constants.REQUEST);
 		if(session != null) {
 			Boolean isAuthenticated = (Boolean) session.getValue(Constants.AUTHENTICATION);
+			if(!isAuthenticated.booleanValue()) {
+				unauthenticatedUser(response, requestedPage);
+			}
 		}
 	}
 

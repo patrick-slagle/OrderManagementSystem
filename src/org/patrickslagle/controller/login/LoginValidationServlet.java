@@ -1,4 +1,9 @@
-package org.patrickslagle.controller;
+/**
+ *<h1>validates the user's login against the database.</h1>
+ */
+
+''
+package org.patrickslagle.controller.login;
 
 import java.io.IOException;
 

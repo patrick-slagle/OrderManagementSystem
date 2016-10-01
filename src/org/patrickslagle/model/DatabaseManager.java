@@ -1,5 +1,6 @@
 /**
- * <h1>Database Manager</h1>
+ *
+ <h1>Database Manager</h1>
  * <h3>The class that oversees all access with the database</h3>
  */
 

@@ -1,3 +1,6 @@
+
+<%-- Business data page --%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,12 +9,12 @@
 <html>
 <head>
 
-<!-- meta tags -->
+<%-- meta tags --%>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- links for fonts, styles, bootstrap -->
+<%-- links for fonts, styles, bootstrap --%>
 
 <link href='https://fonts.googleapis.com/css?family=Allura'
 	rel='stylesheet' type='text/css'>
@@ -21,17 +24,20 @@
 <link rel="stylesheet" type="text/css" href="css/business.css">
 <link rel="stylesheet" type="text/css" href="css/order-details.css">
 
-<!-- javascript links -->
+<%-- javascript links --%>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/tabs.js" type="text/javascript"></script>
 <script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
 <script src="js/modal.js" type="text/javascript"></script>
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5
-elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the
-page via file:// -->
+
+<%-- HTML5 Shim and Respond.js IE8 support of HTML5
+elements and media queries --%>
+
+<%-- WARNING: Respond.js doesn't work if you view the
+page via file:// --%>
+
 <script src="https://oss.maxcdn.com/libs/html5shiv/
 3.7.0/html5shiv.js"
 	type="text/javascript"></script>
@@ -40,12 +46,13 @@ page via file:// -->
 1.4.2/respond.min.js"
 	type="text/javascript"></script>
 
-<!-- for google charts -->
-'
+<%-- for google charts --%>
+
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="js/modal.js" type="text/javascript"></script>
 <script src="js/charts.js" type="text/javascript"></script>
+<script src="js/search-bar.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -76,29 +83,42 @@ page via file:// -->
 			<div id="chart_div"></div>
 		</div>
 	</div>
-	<div class="sales">
-		<table id="orderTable" align="center">
+<div class="sales">
+	<div class="expSearchBox">
+		<div class="expSearchFrom">
+			<input id="field" type="text" placeholder="name, date or price" />
+			<div class="close">
+				<span class="front"></span>
+				<span class="back"></span>
+			</div>
+		</div>
+	</div>
+	<table id="orderTable" align="center">
+		<tr>
+			<th>Date</th>
+			<th>Name</th>
+			<th>Price</th>
+		</tr>
+
+		<%--displaying the data with JSTL --%>
+
+		<c:forEach var="orders" items="${ orders }">
 			<tr>
-				<th>Date</th>
-				<th>Name</th>
-				<th>Price</th>
+				<td>${ orders.dueDate }</td>
+				<td>${ orders.firstName }${ orders.lastName }</td>
+				<td>${ orders.price }</td>
 			</tr>
-			<c:forEach var="orders" items="${ orders }">
-				<tr>
-					<td>${ orders.dueDate }</td>
-					<td>${ orders.firstName }${ orders.lastName }</td>
-					<td>${ orders.price }</td>
-				</tr>
-			</c:forEach>
-		</table>
-		<table id="total" align="center">
-			<tr>
-				<th>Total</th>
-			</tr>
-			<tr>
-				<td>${ priceTotal }</td>
-			</tr>
-		</table>
+		</c:forEach>
+
+	</table>
+	<table id="total" align="center">
+		<tr>
+			<th>Total</th>
+		</tr>
+		<tr>
+			<td>${ priceTotal }</td>
+		</tr>
+	</table>
 	</div>
 </body>
 </html>

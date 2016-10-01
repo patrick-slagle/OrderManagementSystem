@@ -1,4 +1,4 @@
-package org.patrickslagle.controller;
+package org.patrickslagle.controller.orders;
 
 import java.io.IOException;
 import java.text.DateFormat;

@@ -1,3 +1,6 @@
+
+<%-- The main home page --%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -25,10 +28,12 @@
 <script src="js/calendar.js" type="text/javascript"></script>
 
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5
-elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the
-page via file:// -->
+<%-- HTML5 Shim and Respond.js IE8 support of HTML5
+elements and media queries --%>
+
+<%-- WARNING: Respond.js doesn't work if you view the
+page via file:// --%>
+
 <script src="https://oss.maxcdn.com/libs/html5shiv/
 3.7.0/html5shiv.js"></script>
 <script
@@ -39,7 +44,7 @@ page via file:// -->
 
 	<%-- calling the servlet to get the list of orders --%>
 
-	<jsp:include page="/get-orders" />
+	<jsp:include page="/get-orders.do" />
 
 	<%-- converting the list to JSON (for use with javacript) --%>
 
@@ -73,6 +78,8 @@ page via file:// -->
 				<th class="headerItems">Comments</th>
 			</tr>
 
+			<%-- displaying the table using the previously set attribute and JSTL --%>
+			
 			<c:forEach var="orders" items="${ orders }">
 				<tr>
 					<td class="name">${ orders.firstName }${ orders.lastName }</td>
@@ -84,6 +91,8 @@ page via file:// -->
 
 		</table>
 
+		<%-- calendar view with Google Calendars --%>
+		
 		<div id="calendar" class="tabcontent">
 			<iframe
 				src="https://calendar.google.com/calendar/embed?src=pslagle2012%40gmail.com&ctz=America/New_York"
