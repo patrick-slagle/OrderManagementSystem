@@ -75,7 +75,6 @@ public class CalendarEventServlet extends HttpServlet {
         //get the events
         Events events = service.events().list("primary").setPageToken(null).execute();
         List<Event> items = events.getItems();
-        System.out.println(items.get(0).getDescription());
 
         //add each order as an event unless it is already an event
         Date startDate = new Date();
@@ -83,17 +82,29 @@ public class CalendarEventServlet extends HttpServlet {
         DateFormat dateFormat;
         String startDateStr;
         String endDateStr;
+        System.out.println("items: " + items.size());
 
+        /*
+         What I need it to do:
+        
+         Iterate through the orders and events, matching each event to 
+         the current order.
+        
+         After that, see if a event id matched one of the orders. 
+        
+         If it did, return and go to next order
+         If not, create an event for that order
+         */
         boolean match = false;
         for (int i = 0; i < orders.size(); i++) {
             for (int j = 0; j < items.size(); j++) {
-                if (String.valueOf(orders.get(i).getId()) == items.get(j).getId()) {
+                if (String.valueOf(orders.get(i).getId()).equals(items.get(j).getId())) {
                     match = true;
                     System.out.println(match);
                 } else {
                     match = false;
                     System.out.println(match);
-                    System.out.println(items.get(j).getId());
+                    System.out.println("Event id: " + items.get(j).getId() + " " + "order id: " + orders.get(i).getId());
                 }
             }
             if (!match) {
@@ -120,15 +131,13 @@ public class CalendarEventServlet extends HttpServlet {
                         .setId(String.valueOf(orders.get(i).getId()))
                         .setStart(startEventDateTime)
                         .setEnd(endEventDateTime);
-
                 try {
                     event = service.events().insert("primary", event).execute();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
+            } 
         }
-
     }
 
 }
