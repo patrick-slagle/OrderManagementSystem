@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/AuthenticationServlet")
 public class AuthenticationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+        
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,6 +34,7 @@ public class AuthenticationServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
+    /*
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		String requestedPage = request.getParameter(Constants.REQUEST);
@@ -44,5 +45,5 @@ public class AuthenticationServlet extends HttpServlet {
 			}
 		}
 	}
-
+*/
 }

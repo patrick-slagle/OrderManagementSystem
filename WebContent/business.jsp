@@ -104,13 +104,13 @@ page via file:// --%>
 
 		<c:forEach var="orders" items="${ orders }">
 			<tr>
-				<td>${ orders.dueDate }</td>
-				<td>${ orders.firstName }${ orders.lastName }</td>
-				<td>${ orders.price }</td>
+				<td id="date">${ orders.dueDate }</td>
+				<td id="name">${ orders.firstName }${ orders.lastName }</td>
+				<td id="price">${ orders.price }</td>
 			</tr>
 		</c:forEach>
 
-	</table>
+	</table><input type="hidden" value="${priceTotal}" />
 	<table id="total" align="center">
 		<tr>
 			<th>Total</th>

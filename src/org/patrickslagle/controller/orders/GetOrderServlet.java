@@ -46,23 +46,26 @@ public class GetOrderServlet extends HttpServlet {
 	}
 
 	/**
+     * @param request
+     * @param response
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+        
+        @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		FormManager fm = new FormManager();
 		List<Order> al = fm.getOrders();
 		HttpSession session = request.getSession();
 		session.setAttribute("orders", al);
-
 		ArrayList<Double> prices = new ArrayList<Double>();
 		for (int i = 0; i < al.size(); i++) {
 			double price = al.get(i).getPrice();
 			prices.add(price);
 		}
 		double priceTotal = priceTotal(prices);
-		request.setAttribute("priceTotal", priceTotal);
+		session.setAttribute("priceTotal", priceTotal);
 
 	}
 

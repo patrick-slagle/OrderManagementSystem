@@ -29,7 +29,6 @@ window.onload = function() {
 		var json = JSON.parse(responseText);
 
 		$.each(json, function(key, value) {
-			console.log(JSON.stringify(value.product));
 			switch (value.product) {
 			case 'cake':
 				cakes++;

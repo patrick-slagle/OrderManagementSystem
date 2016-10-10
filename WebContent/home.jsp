@@ -45,6 +45,7 @@ page via file:// --%>
 	<%-- calling the servlet to get the list of orders --%>
 
 	<jsp:include page="/get-orders.do" />
+	<jsp:include page="/calendar-events.do" />
 
 	<%-- converting the list to JSON (for use with javacript) --%>
 
@@ -94,9 +95,7 @@ page via file:// --%>
 		<%-- calendar view with Google Calendars --%>
 		
 		<div id="calendar" class="tabcontent">
-			<iframe
-				src="https://calendar.google.com/calendar/embed?src=pslagle2012%40gmail.com&ctz=America/New_York"
-				style="border: 0" frameborder="0" scrolling="no"></iframe>
+			<iframe src="https://calendar.google.com/calendar/embed?src=pslagle12%40gmail.com&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 		</div>
 	</div>
 

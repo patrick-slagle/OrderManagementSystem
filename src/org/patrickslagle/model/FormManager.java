@@ -47,6 +47,8 @@ public class FormManager {
 		String sqlEmail = formatEmail(email);
 		java.sql.Date fmtDate = formatDate(date);
 		double fmtPrice = formatPrice(price);
+                
+                double randNum = Math.random();
 		try {
 			String sql = "INSERT INTO orders " + "(first_name , last_name , phone , email , "
 					+ "due_date, product_type , comments, id, price) " + "VALUES (?,?,?,?,?,?,?,?,?)";
@@ -58,7 +60,7 @@ public class FormManager {
 			pstmt.setDate(5, fmtDate);
 			pstmt.setString(6, product);
 			pstmt.setString(7, comments);
-			pstmt.setInt(8, (int) Math.random());
+			pstmt.setInt(8, (int) randNum * 10000);
 			pstmt.setDouble(9, fmtPrice);
 
 			pstmt.executeUpdate();
@@ -209,44 +211,54 @@ public class FormManager {
 		}
 	}
 
-	public Order getOrderBySearch(String query) {
-		dbm = new DatabaseManager();
-		dbm.setUrl("jdbc:mysql://localhost:3306/pattycakes");
-		dbm.connect();
-
-		Order order = null;
-		ResultSet rs = null;
-		Statement stmt = null;
-		String sql = "";
-
+	public ArrayList<Order> getOrdersBySearch(ArrayList<Order> orders, String query) {
+		ArrayList<Order> resultOrders = null;
+		String type = "";
 		final String nameExp = ".*[a-zA-Z]+.*[a-zA-Z]";
 		final String priceExp = "[0-9]+([,.][0-9]{1,2})?";
 		final String dateExp = "([0-9]{2})/([0-9]{2})/([0-9]{4})";
 
-		try {
-			stmt = dbm.getConn().createStatement();
-			if (query.matches(nameExp)) {
-				System.out.println(nameExp);
-				sql = "SELECT * FROM orders WHERE first_name = '" + query + "'";
-			} else if (query.matches(priceExp)) {
-				System.out.println(priceExp);
-				sql = "SELECT * FROM orders WHERE price = '" + query + "'";
-			} else if (query.matches(dateExp)) {
-				System.out.println(dateExp);
-				sql = "SELECT * FROM orders WHERE due_date = '" + query + "'";
-			}
-			if (!sql.equals("")) {
-				rs = stmt.executeQuery(sql);
-				while (rs.next()) {
-					order = new Order(rs.getString("first_name"), rs.getString("last_name"), rs.getString("phone"),
-							rs.getString("email"), rs.getString("due_date"), rs.getString("product_type"),
-							rs.getString("comments"), rs.getInt("id"), rs.getDouble("price"));
+		if (query.matches(nameExp)) {
+			System.out.println(nameExp);
+			type = "name";
+			resultOrders = getOrderResult(orders, type, query);
+		} else if (query.matches(priceExp)) {
+			type = "price";
+			resultOrders = getOrderResult(orders, type, query);
+			System.out.println(priceExp);
+		} else if (query.matches(dateExp)) {
+			System.out.println(dateExp);
+			type = "date";
+			resultOrders = getOrderResult(orders, type, query);
+		}
+
+		return resultOrders;
+	}
+
+	private ArrayList<Order> getOrderResult(ArrayList<Order> orders, String type, String query) {
+		ArrayList<Order> result = new ArrayList<Order>();
+		switch (type) {
+		case "name":
+			for (int i = 0; i < orders.size(); i++) {
+				if (orders.get(i).getFirstName().equals(query)) {
+					result.add(orders.get(i));
 				}
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		case "price":
+			for (int i = 0; i < orders.size(); i++) {
+				if (Double.toString(orders.get(i).getPrice()).equals(query)) {
+					result.add(orders.get(i));
+				}
+			}
+		case "date":
+			for (int i = 0; i < orders.size(); i++) {
+				if (orders.get(i).getDueDate().equals(query)) {
+					result.add(orders.get(i));
+				}
+			}
 		}
-		return order;
+		System.out.println(result);
+		return result;
 	}
 
 }
