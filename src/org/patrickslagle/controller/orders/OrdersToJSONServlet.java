@@ -19,9 +19,8 @@ import com.google.gson.Gson;
 import jdk.nashorn.internal.runtime.ParserException;
 
 /**
- * Servlet implementation class OrdersToJSONServlet
+ * <h1>Servlet implementation for converting order objects to JSON for use with JS</h1>
  */
-@WebServlet("/OrdersToJSONServlet")
 public class OrdersToJSONServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

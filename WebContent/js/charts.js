@@ -1,3 +1,7 @@
+/*
+JS for populating the google charts
+*/
+
 var cakes = 0;
 var cookies = 0;
 var cupcakes = 0;

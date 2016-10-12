@@ -22,7 +22,7 @@
 						<a class="menuItems" href="new-form.jsp">New Order</a>
 					</li>
 					<li>
-						<a class="menuItems" href="index.jsp">Logout</a>
+						<a class="menuItems" href="logout.do">Logout</a>
 					</li>
 				</ul>
 			</div>

@@ -28,10 +28,6 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/tabs.js" type="text/javascript"></script>
-<script src="js/jquery-3.1.0.min.js" type="text/javascript"></script>
-<script src="js/modal.js" type="text/javascript"></script>
-
 <%-- HTML5 Shim and Respond.js IE8 support of HTML5
 elements and media queries --%>
 
@@ -50,9 +46,11 @@ page via file:// --%>
 
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="js/modal.js" type="text/javascript"></script>
-<script src="js/charts.js" type="text/javascript"></script>
-<script src="js/search-bar.js" type="text/javascript"></script>
+<script src="/js/charts.js" type="text/javascript"></script>
+<script src="/js/search-bar.js" type="text/javascript"></script>
+<script src="/js/tabs.js" type="text/javascript"></script>
+<script src="/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+<script src="/js/modal.js" type="text/javascript"></script>
 
 </head>
 <body>

@@ -1,13 +1,3 @@
-/**
- * 
- * <h1>The FormManager Class contains methods 
- * related to order forms and user registration 
- * forms in the order management system.</h1> 
- * 
- * <h3>It is designed to be used only indirectly by servlets.</h3>
- * 
- */
-
 package org.patrickslagle.model;
 
 import java.sql.PreparedStatement;
@@ -20,6 +10,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+/**
+ * 
+ * <h1>The FormManager Class contains methods 
+ * related to order forms and user registration 
+ * forms in the order management system.</h1> 
+ * 
+ * <h3>It is designed to be used only indirectly by servlets.</h3>
+ * 
+ */
 
 public class FormManager {
 

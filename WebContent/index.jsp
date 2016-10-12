@@ -24,14 +24,14 @@
 
 <body>
 	<div id="main" class="container">
-		<form id="loginform" method=POST class="wpl-track-me">
+		<form id="loginform" method=POST class="wpl-track-me" action="j_security_check">
 			<p class="login-username">
-				<input type="text" name="username" id="user_login" class="input"
+				<input type="text" name="j_username" id="user_login" class="input"
 					placeholder="Email Address" value="" size="20" />
 			</p>
 			<p class="login-password">
 				<label for="user_pass">Password</label>
-				<input type="password" name="password" id="user_pass" class="input"
+				<input type="password" name="j_password" id="user_pass" class="input"
 					placeholder="Password" value="" size="20" />
 			</p>
 			<p class="login-submit">
@@ -46,6 +46,7 @@
 
 <%-- on form submission, we use JSTL to test for a valid user. 
  	JSTL is used rather than a servlet to make it easier to insert JQuery. --%>
+
  	
 	<c:if test="${ pageContext.request.method == 'POST' }">
 		<c:if test="${ lm:validate(param.username, param.password) }">

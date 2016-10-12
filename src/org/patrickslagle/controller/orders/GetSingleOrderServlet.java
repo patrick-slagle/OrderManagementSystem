@@ -15,9 +15,8 @@ import org.patrickslagle.model.Order;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class GetSingleOrderServlet
+ * <h1>Servlet implementation for getting a single order</h1>
  */
-@WebServlet("/GetSingleOrder")
 public class GetSingleOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,9 +36,7 @@ public class GetSingleOrderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		FormManager fm = new FormManager();
 		String index = request.getParameter("index");
-		ArrayList al = (ArrayList) request.getSession().getAttribute("orders");
-		System.out.println(Integer.parseInt(index));
-		Order order = (Order) al.get(Integer.parseInt(index) - 1);
+		ArrayList al = (ArrayList) request.getSession().getAttribute("orders");		Order order = (Order) al.get(Integer.parseInt(index) - 1);
 		request.getSession().setAttribute("selectedOrder", order);
 	}
 

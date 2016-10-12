@@ -15,9 +15,8 @@ import org.patrickslagle.model.Order;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class SearchServlet
+ * <h1>Servlet implementation class SearchServlet</h1>
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/SearchServlet" })
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.patrickslagle.calendar;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -12,11 +7,9 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
-import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
-import com.google.api.services.calendar.model.*;
 import com.google.api.services.calendar.Calendar;
 
 import java.io.InputStream;
@@ -26,8 +19,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *
- * @author pslagle12
+ * <h1>Used for creating an authorized calendar 
+ * and serving it to the event servlet</h1>
  */
 public class CalendarAuthorization {
 
@@ -56,7 +49,12 @@ public class CalendarAuthorization {
 
         }
     }
-
+    /**
+     * authorization method for verifying calendar credentials
+     * 
+     * @return
+     * @throws IOException 
+     */
     private static Credential authorize() throws IOException {
         in = CalendarAuthorization.class.getResourceAsStream("client_secret.json");
         clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
@@ -74,6 +72,11 @@ public class CalendarAuthorization {
         return credential;
     }
 
+    /**
+     * Serve an authorized calendar
+     * @return
+     * @throws IOException 
+     */
     public static Calendar
             getCalendarService() throws IOException {
         Credential cred = authorize();

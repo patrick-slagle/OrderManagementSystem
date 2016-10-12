@@ -15,9 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.patrickslagle.model.FormManager;
 
 /**
- * Servlet implementation class SaveOrderServlet
+ * <h1>Servlet implementation for saving orders</h1>
  */
-@WebServlet("/SaveOrderServlet")
 public class SaveOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

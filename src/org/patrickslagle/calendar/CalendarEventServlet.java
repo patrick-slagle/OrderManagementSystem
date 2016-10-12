@@ -1,60 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.patrickslagle.calendar;
 
-import com.google.api.client.util.DateTime;
-
-import com.google.api.services.calendar.CalendarScopes;
-import com.google.api.services.calendar.model.*;
 import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
 
-import com.google.api.services.calendar.model.EventAttendee;
 import com.google.api.services.calendar.model.EventDateTime;
 import com.google.api.client.util.DateTime;
-import com.google.api.services.calendar.model.EventReminder;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-import java.util.Vector;
-
-import org.patrickslagle.model.Order;
-import java.util.ArrayList;
-import org.patrickslagle.calendar.CalendarAuthorization;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.patrickslagle.model.Order;
 
 /**
- *
- * @author pslagle12
+ * <h1>Create calendar events for each 
+ * order that has been saved in the database</h1>
  */
 public class CalendarEventServlet extends HttpServlet {
 
     /**
-     * Processes requests for POST method.
+     * Processes requests for GET method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -82,22 +55,12 @@ public class CalendarEventServlet extends HttpServlet {
         DateFormat dateFormat;
         String startDateStr;
         String endDateStr;
-        System.out.println("items: " + items.size());
 
-        /*
-         What I need it to do:
-        
-         Iterate through the orders and events, matching each event to 
-         the current order.
-        
-         After that, see if a event id matched one of the orders. 
-        
-         If it did, return and go to next order
-         If not, create an event for that order
-         */
         boolean match = false;
         for (int i = 0; i < orders.size(); i++) {
             for (int j = 0; j < items.size(); j++) {
+                
+                //match orders to events based on the ids
                 if (String.valueOf(orders.get(i).getId()).equals(items.get(j).getId())) {
                     match = true;
                     System.out.println(match);
@@ -123,6 +86,8 @@ public class CalendarEventServlet extends HttpServlet {
 
                 EventDateTime startEventDateTime = new EventDateTime().setDateTime(startDateTime);
                 EventDateTime endEventDateTime = new EventDateTime().setDateTime(endDateTime);
+                
+                //create event, save to calendar
                 Event event = new Event()
                         .setSummary(orders.get(i).getProduct() + " for " + orders.get(i).getFirstName())
                         .setDescription("A " + orders.get(i).getProduct() + " for "
@@ -136,7 +101,7 @@ public class CalendarEventServlet extends HttpServlet {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            } 
+            }
         }
     }
 
