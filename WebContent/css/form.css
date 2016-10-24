@@ -28,7 +28,7 @@ body, html {
 
 .orderForm {
 	width: 80%;
-	height: 80%;
+	height: 61%;
 	margin: 0;
 	padding: 0;
 	background: #8798c0;
@@ -126,7 +126,7 @@ input {
 @media only screen and (min-width: 768px) {
 	.orderForm {
 		width: 64%;
-		height: 56%;
+		height: 61%;
 	}
 	.contentDiv {
 		padding-left: 23%;

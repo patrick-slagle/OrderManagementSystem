@@ -53,14 +53,6 @@
         <url-pattern>/get-order-data.do</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>OrdersToJSONServlet</servlet-name>
-        <servlet-class>org.patrickslagle.controller.orders.OrdersToJSONServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>OrdersToJSONServlet</servlet-name>
-        <url-pattern>/convert-orders.do</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>CalendarEventServlet</servlet-name>
         <servlet-class>org.patrickslagle.calendar.CalendarEventServlet</servlet-class>
     </servlet>
@@ -75,6 +67,22 @@
      <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>org.patrickslagle.controller.orders.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search-orders.do</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>OrdersToJSONServlet</servlet-name>
+        <servlet-class>org.patrickslagle.controller.orders.OrdersToJSONServlet</servlet-class>
+    </servlet>
+     <servlet-mapping>
+        <servlet-name>OrdersToJSONServlet</servlet-name>
+        <url-pattern>/convert-orders.do</url-pattern>
     </servlet-mapping>
     <security-constraint>
         <display-name>AdminConstraint</display-name>

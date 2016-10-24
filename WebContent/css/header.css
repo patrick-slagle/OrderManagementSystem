@@ -1,45 +1,104 @@
 @CHARSET "UTF-8";
 
+* {
+    box-sizing: border-box;
+}
+
+#navbar {
+    width: 100%;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar-header {
+    width: 100%;
+}
+
+.navbar-replacement {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+
 .menubar {
-	background: #CFC3F8;
-	box-shadow: 5px 5px 2px #888888;
+    background: #CFC3F8;
+    box-shadow: 5px 5px 2px #888888;
+    padding: 0;
 }
 
-.menubar a#logo {@import
-	url('https://fonts.googleapis.com/css?family=Allura');width: 
-	 260px ; padding: 0 0 0 15px ; margin: 0; font-family: Allura,
-	sans-serif ; font-size: 35px ; color: #0034AF ;
-	
+
+
+@import url('https://fonts.googleapis.com/css?family=Allura');
+
+.menubar a#logo {
+    width: 260px; 
+    padding: 0 0 0 15px; 
+    margin: 0; 
+    font-family: Allura, sans-serif; 
+    font-size: 35px; 
+    color: #0034AF;
+
 }
 
-.menubar ul li a.menuItems {
-	display: inline-block;
-	text-decoration: none;
+#menu-items {
+    min-width: 250px;
+    margin-bottom: 20px;
+    height: 100%;
+    background: #CFC3F8;
+    padding: 0;
+    float: right;
 }
 
-.menubar ul {
-	float: right;
+#menu-items li {
+    height: 52px;
+    width: 182px;
+    margin-right: -4px;
+    text-decoration: none;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 60px;
+    font-size: 16px;
+    border-left: solid white 2px;
+    color: #332419;
+    display: inline-block;
 }
 
-.menubar ul li {
-	height: 100%;
-	width: 195px;
-	vertical-align: middle;
-	text-align: center;
-	line-height: 60px;
-	text-align: center;
-	font-size: 16px;
-	border-left: solid white 2px;
-	color: #332419;
+#menu-items li a.menuItems {
+    height: 50px;
+    display: block;    
 }
 
-.menubar ul li a.menuItems {
-	width: 100%;
-	height: 100%;
+#menu-items li a.menuItems:hover {
+    color: #332419;
+    background-color: #f1f1f1;
 }
 
-.menubar ul li a.menuItems:hover {
-	color: #332419;
-	text-decoration: none;
-	background-color: #f1f1f1;
+@media only screen and (max-width:1200px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    #menu-items {
+        width: 100%;
+        border: 1px solid white;
+        box-shadow: 5px 5px 2px #888888;
+        float: left;
+    }   
+    #menu-items li {
+        width: 100%;
+        border-bottom: 1px solid white;
+    }
+    .navbar-fixed-top {
+        top: 0px; /* you'll have to figure out the exact number here */
+    }
+
+    .navbar-fixed-top, .navbar-fixed-bottom {
+        position: relative; /* this can also be static */
+    }
 }

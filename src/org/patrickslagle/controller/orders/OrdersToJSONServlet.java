@@ -1,22 +1,12 @@
 package org.patrickslagle.controller.orders;
 
+import com.google.gson.Gson;
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.google.gson.Gson;
-
-import jdk.nashorn.internal.runtime.ParserException;
 
 /**
  * <h1>Servlet implementation for converting order objects to JSON for use with JS</h1>
@@ -33,16 +23,24 @@ public class OrdersToJSONServlet extends HttpServlet {
 	}
 
 	/**
+     * @param request
+     * @param response
+     * @throws javax.servlet.ServletException
+     * @throws java.io.IOException
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+        @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Object orders = request.getSession().getAttribute("orders");
+                
 		String json = new Gson().toJson(orders);
+                
+                System.out.println(json);
 		try {
 			response.getWriter().write(json);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			System.out.println("problem parsing JSON");
 		}
 	}

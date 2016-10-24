@@ -1,117 +1,117 @@
 @CHARSET "UTF-8";
 
 * { @include box-sizing(border-box);
-	
+
 }
 
 body, html {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .headerDiv {
-	width: 100%;
+    width: 100%;
 }
 
 .headerDiv h1 {@import
-	url('https://fonts.googleapis.com/css?family=Allura');font-family: Allura,
-	sans-serif ; font-size: 45px ; color: #0034AF ; text-align: center ;
-	
+               url('https://fonts.googleapis.com/css?family=Allura');font-family: Allura,
+                   sans-serif ; font-size: 45px ; color: #0034AF ; text-align: center ;
+
 }
 
 .charts {
-	width: 80%;
-	height: 70%;
-	border: 1px solid blue;
-	border-bottom: 1px solid white;
-	overflow: hidden;
-	margin: auto;
-	margin-top: 50px;
-	background: #CFC3F8;
-	box-shadow: 10px 10px 5px #888888;
+    width: 80%;
+    height: 70%;
+    border: 1px solid blue;
+    border-bottom: 1px solid white;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 50px;
+    background: #CFC3F8;
+    box-shadow: 10px 10px 5px #888888;
 }
 
 .pieChartDiv {
-	padding: 0;
-	float: right;
-	width: 100%;
-	height: 50%;
-	border-left: 1px solid white;
+    padding: 0;
+    float: right;
+    width: 100%;
+    height: 50%;
+    border-left: 1px solid white;
 }
 
 .lineChartDiv {
-	padding: 0;
-	float: left;
-	width: 100%;
-	height: 50%;
+    padding: 0;
+    float: left;
+    width: 100%;
+    height: 50%;
 }
 
 #piechart {
-	padding-left: 0px;
-	margin: auto;
-	width: 100%;
-	height: 100%;
+    padding-left: 0px;
+    margin: auto;
+    width: 100%;
+    height: 100%;
 }
 
 #chart_div {
-	padding-left: 25px; 
-	margin: auto;
-	width: 100%;
-	height: 80%;
+    padding-left: 25px; 
+    margin: auto;
+    width: 100%;
+    height: 80%;
 }
 
 .sales {
-	width: 80%;
-	height: 70%;
-	border: 1px solid blue;
-	border-top: 1px solid white;
-	overflow: hidden;
-	margin: auto;
-	margin-bottom: 20px;
-	background: #CFC3F8;
-	box-shadow: 10px 10px 5px #888888;
-	padding-top: 40px;
+    width: 80%;
+    height: 70%;
+    border: 1px solid blue;
+    border-top: 1px solid white;
+    overflow: hidden;
+    margin: auto;
+    margin-bottom: 20px;
+    background: #CFC3F8;
+    box-shadow: 10px 10px 5px #888888;
+    padding-top: 40px;
 }
 
 .sales table {
-	width: 95%;
-	table-layout: fixed;
+    width: 95%;
+    table-layout: fixed;
 }
 
 #orderTable {
-	padding-top: 5%;
-	margin-top: 35px;
+    padding-top: 5%;
+    margin-top: 35px;
 }
 
 .sales table tr:nth-child(even) {
-	background-color: #f2f2f2;
+    background-color: #f2f2f2;
 }
 
 .sales table tr:hover {
-	color: white;
-	background: #0034AF;
+    color: white;
+    background: #0034AF;
 }
 
 .sales table th {
-	width: 100%;
-	height: 20px;
-	background: #4EAFCD;
-	color: white;
-	border: 1px solid #ddd;
-	padding: 8px;
-	text-align: center;
-	font-size: 1.7em;
-	font-family: Veranda, sans-serif;
-	background: #4EAFCD;
+    width: 100%;
+    height: 20px;
+    background: #4EAFCD;
+    color: white;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 1.7em;
+    font-family: Veranda, sans-serif;
+    background: #4EAFCD;
 }
 
 .sales table td {
-	border: 1px solid #ddd;
-	padding: 8px;
-	margin: auto;
-	width: 100%;
-	height: 10px;
-	text-align: center;
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin: auto;
+    width: 100%;
+    height: 10px;
+    text-align: center;
 }
 
 
@@ -126,12 +126,12 @@ body, html {
 @import url(https://fonts.googleapis.com/css?family=Lato:400,300,700,900);
 
 /* ******************************************************
-	Expanding Search Bar - CSS Only Version
+        Expanding Search Bar - CSS Only Version
 *********************************************************/
 
 
 .expSearchBox {
-	width: 100%;
+    width: 100%;
     float: right;
     margin: 28px 0;
 }
@@ -145,7 +145,7 @@ body, html {
     margin-left: 37%;
 }
 input#field{
-	cursor:pointer;
+    cursor:pointer;
     border:none;
     background:transparent;
     height:30px;
@@ -157,8 +157,8 @@ input#field{
     transition: width .5s; 
     position:relative;
     z-index:2;
-   color:#fff;
-    }
+    color:#fff;
+}
 input#field:focus{
     width:300px;
     outline:none;
@@ -169,15 +169,15 @@ input#field:focus{
     color:    #fff;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #fff;
-   opacity:  1;
+    color:    #fff;
+    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #fff;
-   opacity:  1;
+    color:    #fff;
+    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #fff;
+    color:    #fff;
 }
 
 .close{
@@ -203,17 +203,17 @@ input#field:focus{
     right: -7px;
     top: 29px;
     width: 14px;
-	
-	 -webkit-transition: .2s .5s ease-in-out ;
+
+    -webkit-transition: .2s .5s ease-in-out ;
     -moz-transition: .2s .5s ease-in-out;
     -o-transition: .2s .5s ease-in-out;
     transition: .2s .5s ease-in-out;    
-   -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);    
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);    
 }
-   
+
 
 .close span.back{
     top:12px;
@@ -239,27 +239,27 @@ input#field:focus + .close span.back{
 
 
 @media only screen and (min-width: 900px) {
-	.charts {
-		width: 80%;
-		height: 35%;
-	}
-	.pieChartDiv {
-		width: 50%;
-		height: 100%;
-		border-right: 1px solid white;
-	}
-	.lineChartDiv {
-		width: 50%;
-		height: 100%;
-	}
-	.sales {
-		width: 80%;
-		height: 70%;
-	}
-	.sales table {
-		width: 80%;
-	}
-	.sales table td {
-		height: 20px;
-	}
+    .charts {
+        width: 80%;
+        height: 35%;
+    }
+    .pieChartDiv {
+        width: 50%;
+        height: 100%;
+        border-right: 1px solid white;
+    }
+    .lineChartDiv {
+        width: 50%;
+        height: 100%;
+    }
+    .sales {
+        width: 80%;
+        height: 70%;
+    }
+    .sales table {
+        width: 80%;
+    }
+    .sales table td {
+        height: 20px;
+    }
 }

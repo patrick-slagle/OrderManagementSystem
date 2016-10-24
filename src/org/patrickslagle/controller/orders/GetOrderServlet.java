@@ -2,14 +2,9 @@ package org.patrickslagle.controller.orders;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.json.JsonArray;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import org.patrickslagle.model.FormManager;
 import org.patrickslagle.model.Order;
 
-import com.google.gson.Gson;
 
 /**
  *
@@ -50,8 +44,25 @@ public class GetOrderServlet extends HttpServlet {
             throws ServletException, IOException {
         FormManager fm = new FormManager();
         List<Order> al = fm.getOrders();
+        
+        java.util.Date date = new java.util.Date();
+        String fmtDate = new java.text.SimpleDateFormat("yyyy-MM-dd").format(date);
+
         HttpSession session = request.getSession();
+
+        
+        //Setting some date attributes for 
+        String parseHelper = fmtDate.substring(fmtDate.indexOf("-") + 1);
+        String year = fmtDate.substring(0, fmtDate.indexOf("-"));
+        String day = parseHelper.substring(parseHelper.indexOf("-") + 1);
+        String month = parseHelper.substring(0, parseHelper.indexOf("-"));
+        
+        session.setAttribute("year", year);
+        session.setAttribute("month", month);
+        session.setAttribute("day", day);
+        
         session.setAttribute("orders", al);
+        
         ArrayList<Double> prices = new ArrayList<Double>();
         for (int i = 0; i < al.size(); i++) {
             double price = al.get(i).getPrice();

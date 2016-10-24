@@ -2,121 +2,129 @@
 <%-- Business data page --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
 
-<%-- meta tags --%>
+        <title>PattyCakes Order Management</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <%-- meta tags --%>
 
-<%-- links for fonts, styles, bootstrap --%>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href='https://fonts.googleapis.com/css?family=Allura'
-	rel='stylesheet' type='text/css'>
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/header.css">
-<link rel="stylesheet" type="text/css" href="css/business.css">
-<link rel="stylesheet" type="text/css" href="css/order-details.css">
+        <%-- links for fonts, styles, bootstrap --%>
 
-<%-- javascript links --%>
+        <link href='https://fonts.googleapis.com/css?family=Allura'
+              rel='stylesheet' type='text/css'>
+        <link rel="stylesheet"
+              href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/header.css">
+        <link rel="stylesheet" type="text/css" href="css/business.css">
+        <link rel="stylesheet" type="text/css" href="css/order-details.css">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<%-- HTML5 Shim and Respond.js IE8 support of HTML5
-elements and media queries --%>
+        <%-- javascript links --%>
 
-<%-- WARNING: Respond.js doesn't work if you view the
-page via file:// --%>
+        <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 
-<script src="https://oss.maxcdn.com/libs/html5shiv/
-3.7.0/html5shiv.js"
-	type="text/javascript"></script>
-<script
-	src="https://oss.maxcdn.com/libs/respond.js/
-1.4.2/respond.min.js"
-	type="text/javascript"></script>
+        <%-- HTML5 Shim and Respond.js IE8 support of HTML5
+        elements and media queries --%>
 
-<%-- for google charts --%>
+        <%-- WARNING: Respond.js doesn't work if you view the
+        page via file:// 
 
-<script type="text/javascript"
-	src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="/js/charts.js" type="text/javascript"></script>
-<script src="/js/search-bar.js" type="text/javascript"></script>
-<script src="/js/tabs.js" type="text/javascript"></script>
-<script src="/js/jquery-3.1.0.min.js" type="text/javascript"></script>
-<script src="/js/modal.js" type="text/javascript"></script>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/
+                3.7.0/html5shiv.js"
+        type="text/javascript"></script>
+        <script
+            src="https://raw.github.com/scottjehl/Respond/master/dest/respond.min.js"
+        type="text/javascript"></script>
+        --%>
+        
+        <%-- for google charts --%>
 
-</head>
-<body>
+        <script type="text/javascript"
+        src="https://www.gstatic.com/charts/loader.js"></script>
 
-	<%-- header --%>
+        <script src="js/charts.js" type="text/javascript"></script>
+        <script src="js/search-bar.js" type="text/javascript"></script>
+        <script src="js/tabs.js" type="text/javascript"></script>
+        <script src="js/modal.js" type="text/javascript"></script>
 
-	<jsp:include page="header.jsp" />
+    </head>
+    <body>
 
-	<%-- Where the modal window will be created --%>
+        <%-- header --%>
 
-	<div class="modalContainer" id="modal">
-		<div class="modalContent"></div>
-	</div>
+        <jsp:include page="header.jsp" />
 
-	<%-- main body --%>
+        <%-- Where the modal window will be created --%>
 
-	<div class="headerDiv">
-		<h1>Sales Data</h1>
-	</div>
+        <div class="modalContainer" id="modal">
+            <div class="modalContent"></div>
+        </div>
 
-	<%-- we use google charts for data visualization --%>
+        <%-- main body --%>
 
-	<div class="charts">
-		<div class="pieChartDiv">
-			<div id="piechart"></div>
-		</div>
-		<div class="lineChartDiv">
-			<div id="chart_div"></div>
-		</div>
-	</div>
-<div class="sales">
-	<div class="expSearchBox">
-		<div class="expSearchFrom">
-			<input id="field" type="text" placeholder="name, date or price" />
-			<div class="close">
-				<span class="front"></span>
-				<span class="back"></span>
-			</div>
-		</div>
-	</div>
-	<table id="orderTable" align="center">
-		<tr>
-			<th>Date</th>
-			<th>Name</th>
-			<th>Price</th>
-		</tr>
+        <div class="headerDiv">
+            <h1>Sales Data</h1>
+        </div>
 
-		<%--displaying the data with JSTL --%>
+        <%-- we use google charts for data visualization --%>
 
-		<c:forEach var="orders" items="${ orders }">
-			<tr>
-				<td id="date">${ orders.dueDate }</td>
-				<td id="name">${ orders.firstName }${ orders.lastName }</td>
-				<td id="price">${ orders.price }</td>
-			</tr>
-		</c:forEach>
+        <div class="charts">
+            <div class="pieChartDiv">
+                <div id="piechart"></div>
+            </div>
+            <div class="lineChartDiv">
+                <div id="chart_div"></div>
+            </div>
+        </div>
+        <div class="sales">
+            <div class="expSearchBox">
+                <div class="expSearchFrom">
+                    <input id="field" type="text" placeholder="name, date or price" />
+                    <div class="close">
+                        <span class="front"></span>
+                        <span class="back"></span>
+                    </div>
+                </div>
+            </div>
+            <table id="orderTable" align="center">
+                <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
 
-	</table><input type="hidden" value="${priceTotal}" />
-	<table id="total" align="center">
-		<tr>
-			<th>Total</th>
-		</tr>
-		<tr>
-			<td>${ priceTotal }</td>
-		</tr>
-	</table>
-	</div>
-</body>
+                <%--displaying the data with JSTL --%>
+
+                <c:forEach var="order" items="${ orders }">
+                    <c:if test="${ order.year <= year }">
+                        <c:if test="${ order.month <= month }">
+                            <tr>
+                                <td>${order.dueDate}</td>
+                                <td>${ order.firstName } ${order.lastName} </td>
+                                <td>${ order.price }</td>
+                            </tr>
+                        </c:if>
+                    </c:if>
+                </c:forEach>
+
+            </table><input type="hidden" value="${priceTotal}" />
+            <table id="total" align="center">
+                <tr>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>${ priceTotal }</td>
+                </tr>
+            </table>
+        </div>
+    </body>
 </html>

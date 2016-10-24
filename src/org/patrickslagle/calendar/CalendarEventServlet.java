@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.patrickslagle.model.Order;
 
 /**
- * <h1>Create calendar events for each 
- * order that has been saved in the database</h1>
+ * <h1>Create calendar events for each order that has been saved in the
+ * database</h1>
  */
 public class CalendarEventServlet extends HttpServlet {
 
@@ -45,10 +45,17 @@ public class CalendarEventServlet extends HttpServlet {
         //get the orders objects
         ArrayList<Order> orders = (ArrayList) request.getSession().getAttribute("orders");
 
+        for (int i = 0; i < orders.size(); i++) {
+            System.out.println(orders.get(i).getId());
+        }
         //get the events
         Events events = service.events().list("primary").setPageToken(null).execute();
         List<Event> items = events.getItems();
+        System.out.println();
 
+        for (int i = 0; i < items.size(); i++) {
+            System.out.println(items.get(i).getId());
+        }
         //add each order as an event unless it is already an event
         Date startDate = new Date();
         Date endDate;
@@ -56,22 +63,9 @@ public class CalendarEventServlet extends HttpServlet {
         String startDateStr;
         String endDateStr;
 
-        boolean match = false;
-        for (int i = 0; i < orders.size(); i++) {
-            for (int j = 0; j < items.size(); j++) {
-                
-                //match orders to events based on the ids
-                if (String.valueOf(orders.get(i).getId()).equals(items.get(j).getId())) {
-                    match = true;
-                    System.out.println(match);
-                } else {
-                    match = false;
-                    System.out.println(match);
-                    System.out.println("Event id: " + items.get(j).getId() + " " + "order id: " + orders.get(i).getId());
-                }
-            }
-            if (!match) {
-                System.out.println("here");
+        if (orders.size() > items.size()) {
+
+            for (int i = items.size(); i < orders.size(); i++) {
                 String date = orders.get(i).getDueDate();
                 try {
                     startDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
@@ -86,7 +80,7 @@ public class CalendarEventServlet extends HttpServlet {
 
                 EventDateTime startEventDateTime = new EventDateTime().setDateTime(startDateTime);
                 EventDateTime endEventDateTime = new EventDateTime().setDateTime(endDateTime);
-                
+
                 //create event, save to calendar
                 Event event = new Event()
                         .setSummary(orders.get(i).getProduct() + " for " + orders.get(i).getFirstName())
@@ -104,5 +98,4 @@ public class CalendarEventServlet extends HttpServlet {
             }
         }
     }
-
 }
