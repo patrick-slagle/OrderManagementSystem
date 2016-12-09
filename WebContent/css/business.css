@@ -81,6 +81,8 @@ body, html {
 #orderTable {
     padding-top: 5%;
     margin-top: 35px;
+    overflow-y: auto;
+    border-collapse: collapse;
 }
 
 .sales table tr:nth-child(even) {
@@ -236,7 +238,6 @@ input#field:focus + .close span.back{
     transform: rotate(-45deg);
     opacity:1;
 }
-
 
 @media only screen and (min-width: 900px) {
     .charts {

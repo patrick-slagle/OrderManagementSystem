@@ -36,7 +36,8 @@ public class GetSingleOrderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		FormManager fm = new FormManager();
 		String index = request.getParameter("index");
-		ArrayList al = (ArrayList) request.getSession().getAttribute("orders");		Order order = (Order) al.get(Integer.parseInt(index) - 1);
+		ArrayList al = (ArrayList) request.getSession().getAttribute("orders");		
+                Order order = (Order) al.get(Integer.parseInt(index) - 1);
 		request.getSession().setAttribute("selectedOrder", order);
 	}
 

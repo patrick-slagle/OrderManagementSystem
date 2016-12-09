@@ -4,8 +4,10 @@ window.addEventListener('load', function () {
     var modal = $('#modal');
     $('#orderTable').find('tr').click(function () {
         var rowIndex = $(this).index();
+        var orderData = $(this).text();
+        console.log(firstname);
         $.post('get-order-data.do', {
-            index: rowIndex
+            data: orderData
         }, function () {
             $('.modalContent').load('modal-form.jsp');
             modal[0].style.display = 'block';

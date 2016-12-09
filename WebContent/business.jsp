@@ -45,7 +45,7 @@
             src="https://raw.github.com/scottjehl/Respond/master/dest/respond.min.js"
         type="text/javascript"></script>
         --%>
-        
+
         <%-- for google charts --%>
 
         <script type="text/javascript"
@@ -55,6 +55,8 @@
         <script src="js/search-bar.js" type="text/javascript"></script>
         <script src="js/tabs.js" type="text/javascript"></script>
         <script src="js/modal.js" type="text/javascript"></script>
+        <script src="js/business.js" type="text/javascript"></script>
+
 
     </head>
     <body>
