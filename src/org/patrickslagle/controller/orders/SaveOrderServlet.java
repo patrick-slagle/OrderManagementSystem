@@ -1,21 +1,18 @@
 package org.patrickslagle.controller.orders;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.patrickslagle.model.FormManager;
 import org.patrickslagle.model.Order;
-
+import org.patrickslagle.calendar.CalendarEventServlet
 /**
  * <h1>Servlet implementation for saving orders</h1>
  */
@@ -63,11 +60,13 @@ public class SaveOrderServlet extends HttpServlet {
             FormManager fm = new FormManager();
             fm.saveOrder(firstName, lastName, phone, email, dueDate, product, price, comments);
             List<Order> al = fm.getOrders();
-            
+
             request.setAttribute("orders", al);
-            rd = request.getRequestDispatcher("home.jsp");
-            rd.forward(request, response);
+            
+              
+           response.sendRedirect("logout.do");
         }
+
     }
 
 }

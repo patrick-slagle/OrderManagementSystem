@@ -47,18 +47,21 @@ public class FormManager {
         double fmtPrice = formatPrice(price);
 
         double randNum = Math.random();
+
+        System.out.println(randNum);
         try {
-            String sql = "INSERT INTO orders " + "(first_name , last_name , phone , email , "
-                    + "due_date, product_type , comments, id, price) " + "VALUES (?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO orders " + "(id, first_name , last_name , phone , email , "
+                    + "due_date, product_type , comments, price) " + "VALUES (?,?,?,?,?,?,?,?,?)";
             pstmt = dbm.getConn().prepareStatement(sql);
-            pstmt.setString(1, firstName);
-            pstmt.setString(2, lastName);
-            pstmt.setString(3, phone);
-            pstmt.setString(4, sqlEmail);
-            pstmt.setDate(5, fmtDate);
-            pstmt.setString(6, product);
-            pstmt.setString(7, comments);
-            pstmt.setInt(8, (int) randNum * 10000);
+            
+            pstmt.setInt(1, (int) randNum * 10000);
+            pstmt.setString(2, firstName);
+            pstmt.setString(3, lastName);
+            pstmt.setString(4, phone);
+            pstmt.setString(5, sqlEmail);
+            pstmt.setDate(6, fmtDate);
+            pstmt.setString(7, product);
+            pstmt.setString(8, comments);
             pstmt.setDouble(9, fmtPrice);
 
             pstmt.executeUpdate();

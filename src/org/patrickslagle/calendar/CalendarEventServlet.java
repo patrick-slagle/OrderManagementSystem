@@ -6,6 +6,7 @@ import com.google.api.services.calendar.model.Events;
 
 import com.google.api.services.calendar.model.EventDateTime;
 import com.google.api.client.util.DateTime;
+import com.google.api.services.calendar.model.EventAttachment;
 import java.util.List;
 
 import java.io.IOException;
@@ -14,6 +15,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,17 +49,13 @@ public class CalendarEventServlet extends HttpServlet {
         //get the orders objects
         ArrayList<Order> orders = (ArrayList) request.getSession().getAttribute("orders");
 
-        for (int i = 0; i < orders.size(); i++) {
-            System.out.println(orders.get(i).getId());
-        }
         //get the events
         Events events = service.events().list("primary").setPageToken(null).execute();
         List<Event> items = events.getItems();
-        System.out.println();
 
-        for (int i = 0; i < items.size(); i++) {
-            System.out.println(items.get(i).getId());
-        }
+        //Here I add images to the order objects if the events have them.
+        addOrderAttachments(items, orders);
+
         //add each order as an event unless it is already an event
         Date startDate = new Date();
         Date endDate;
@@ -66,12 +66,20 @@ public class CalendarEventServlet extends HttpServlet {
         if (orders.size() > items.size()) {
 
             for (int i = items.size(); i < orders.size(); i++) {
-                String date = orders.get(i).getDueDate();
+                String date = "";
                 try {
-                    startDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+                    date = orders.get(i).getDueDate();
+                    System.out.println(date);
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
+
+                try {
+                    startDate = new SimpleDateFormat("MM/dd/yyyy").parse(date);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+
                 endDate = new Date(startDate.getTime() + 86400000);
                 endDateStr = new SimpleDateFormat().format(endDate);
 
@@ -80,14 +88,13 @@ public class CalendarEventServlet extends HttpServlet {
 
                 EventDateTime startEventDateTime = new EventDateTime().setDateTime(startDateTime);
                 EventDateTime endEventDateTime = new EventDateTime().setDateTime(endDateTime);
-
+                System.out.println(orders.get(i).getId());
                 //create event, save to calendar
                 Event event = new Event()
                         .setSummary(orders.get(i).getProduct() + " for " + orders.get(i).getFirstName())
                         .setDescription("A " + orders.get(i).getProduct() + " for "
                                 + orders.get(i).getFirstName()
                                 + " " + orders.get(i).getLastName())
-                        .setId(String.valueOf(orders.get(i).getId()))
                         .setStart(startEventDateTime)
                         .setEnd(endEventDateTime);
                 try {
@@ -95,7 +102,37 @@ public class CalendarEventServlet extends HttpServlet {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                event.setId(String.valueOf(orders.get(i).getId()));
+                   try {
+                    event = service.events().update("primary", event.getId(), event).execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
             }
+        }
+
+        response.sendRedirect("home.jsp");
+    }
+
+    public void addOrderAttachments(List<Event> items, List<Order> orders) {
+        for (int i = 0; i < items.size(); i++) {
+            Event event = items.get(i);
+            List<EventAttachment> attachments = event.getAttachments();
+
+            if (attachments != null) {
+                for (int j = 0; j < orders.size(); j++) {
+                    if (orders.get(j).getId() == Integer.parseInt(event.getId())) {
+                        for (int k = 0; k < attachments.size(); k++) {
+                            orders.get(j).setImageTitle(attachments.get(k).getTitle());
+                            orders.get(j).setImageUrl(attachments.get(k).getFileUrl());
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

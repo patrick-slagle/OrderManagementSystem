@@ -90,13 +90,38 @@ input {
 #comments {
     text-indent: 20px;
     padding-top: 10px;
-    border: 1px solid #957cee;
     height: 300px;
     color: #957cee;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 textarea {
     resize: none;
+}
+
+#imagesDiv {
+    border: 1px solid #957cee;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+imagesDiv a {
+    font-size: 100px;
+}
+
+/* The Close Button */
+.closeModal {
+    color: white;
+    float: right;
+    font-size: 45px;
+    font-weight: bold;
+    margin-right: 42%; 
+    margin-bottom: 15px;
+}
+
+.closeModal:hover,
+.closeModal:focus {
+    color: blue;
+    text-decoration: none;
+    cursor: pointer;
 }

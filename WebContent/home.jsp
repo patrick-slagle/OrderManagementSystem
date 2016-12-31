@@ -59,7 +59,8 @@
 
         <%-- Where the modal window will be created --%>
 
-        <div class="modalContainer" id="modal">
+       <div class="modalContainer" id="modal">
+            <span class="closeModal">&times;</span>
             <div class="modalContent"></div>
         </div>
 

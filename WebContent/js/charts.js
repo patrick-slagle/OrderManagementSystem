@@ -19,20 +19,29 @@ var otherTwoMonthsAgo = 0;
 
 var fullDate = new Date();
 
+
+//used for counting up the products and month totals
 var twoDigitMonth = ((fullDate.getMonth().length + 1) === 1) ? (fullDate
-        .getMonth() + 1) : '0' + (fullDate.getMonth() + 1);
-var lastMonth = '0' + (twoDigitMonth - 1);
-var twoMonthsAgo = '0' + (twoDigitMonth - 2);
+        .getMonth() + 1) : (fullDate.getMonth() + 1);
+var lastMonth = (twoDigitMonth - 1);
+var twoMonthsAgo = (twoDigitMonth - 2);
 
 $.get('convert-orders.do', function (responseText) {
     var json = JSON.parse(responseText);
     $.each(json, function (key, value) {
+        
+        //get order month
         var date = value.dueDate;
         var split = date.substr(date.indexOf('-') + 1);
         var month = split.split('-')[0];
 
+        //convert all relevant months to same type
         var thisMonthAsInt = parseInt(twoDigitMonth);
         var orderMonthAsInt = parseInt(month);
+        var lastMonthAsInt = parseInt(lastMonth);
+        var twoMonthsAgoAsInt = parseInt(twoMonthsAgo);
+        
+        //perform logic to count up product and month totals for the charts
         if (orderMonthAsInt <= thisMonthAsInt) {
 
             switch (value.product) {
@@ -49,41 +58,43 @@ $.get('convert-orders.do', function (responseText) {
                     other++;
                     break;
             }
-            switch (month) {
-                case lastMonth:
-                switch (value.product) {
-                    case 'cake':
-                        cakesLastMonth++;
-                        break;
-                    case 'cookies':
-                        cookiesLastMonth++;
-                        break;
-                    case 'cupcakes':
-                        cupcakesLastMonth++;
-                        break;
-                    default:
-                        otherLastMonth++;
-                        break;
-                }
-                case twoMonthsAgo:
-                switch (value.product) {
-                    case 'cake':
-                        cakesTwoMonthsAgo++;
-                        break;
-                    case 'cookies':
-                        cookiesTwoMonthsAgo++;
-                        break;
-                    case 'cupcakes':
-                        cupcakesTwoMonthsAgo++;
-                        break;
-                    default:
-                        otherTwoMonthsAgo++;
-                        break;
-                }
+           
+            if(orderMonthAsInt === lastMonthAsInt) {
+                    switch (value.product) {
+                        case 'cake':
+                            cakesLastMonth++;
+                            break;
+                        case 'cookies':
+                            cookiesLastMonth++;
+                            break;
+                        case 'cupcakes':
+                            cupcakesLastMonth++;
+                            break;
+                        default:
+                            otherLastMonth++;
+                            break;
+                    }
+                } else if (orderMonthAsInt === twoMonthsAgoAsInt) {
+                    switch (value.product) {
+                        case 'cake':
+                            cakesTwoMonthsAgo++;
+                            break;
+                        case 'cookies':
+                            cookiesTwoMonthsAgo++;
+                            break;
+                        case 'cupcakes':
+                            cupcakesTwoMonthsAgo++;
+                            break;
+                        default:
+                            otherTwoMonthsAgo++;
+                            break;
+                    }
             }
         }
     });
 });
+
+//load charts, plug in the data
 google.charts.load('current', {
     packages: ['corechart', 'bar']
 });
@@ -147,6 +158,8 @@ function drawChart() {
     barchart.draw(barchart_data, google.charts.Bar
             .convertOptions(barchart_options));
 
+
+    //nicely resize the charts on page resize
     $(window).resize(function () {
         drawChart();
     });

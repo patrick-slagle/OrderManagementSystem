@@ -52,9 +52,9 @@
         src="https://www.gstatic.com/charts/loader.js"></script>
 
         <script src="js/charts.js" type="text/javascript"></script>
+        <script src="js/modal.js" type="text/javascript"></script>
         <script src="js/search-bar.js" type="text/javascript"></script>
         <script src="js/tabs.js" type="text/javascript"></script>
-        <script src="js/modal.js" type="text/javascript"></script>
         <script src="js/business.js" type="text/javascript"></script>
 
 
@@ -68,6 +68,7 @@
         <%-- Where the modal window will be created --%>
 
         <div class="modalContainer" id="modal">
+            <span class="closeModal">&times;</span>
             <div class="modalContent"></div>
         </div>
 
@@ -106,7 +107,8 @@
 
                 <%--displaying the data with JSTL --%>
 
-                <c:forEach var="order" items="${ orders }">
+                <c:forEach begin="0" end="5" var="order" items="${ orders }">
+                    
                     <c:if test="${ order.year <= year }">
                         <c:if test="${ order.month <= month }">
                             <tr>
@@ -117,8 +119,8 @@
                         </c:if>
                     </c:if>
                 </c:forEach>
-
-            </table><input type="hidden" value="${priceTotal}" />
+            </table>
+                
             <table id="total" align="center">
                 <tr>
                     <th>Total</th>
@@ -128,5 +130,6 @@
                 </tr>
             </table>
         </div>
+               
     </body>
 </html>

@@ -1,7 +1,15 @@
 package org.patrickslagle.model;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.DateFormatter;
 
 /**
  * <h1>Order objects used to encapsulate data from orders table in the
@@ -9,7 +17,9 @@ import java.util.regex.Pattern;
  */
 public class Order {
 
-    private String firstName, lastName, phoneNumber, email, dueDate, product, comments;
+    private String firstName, lastName, phoneNumber,
+            email, dueDate, product, comments, imageTitle, imageUrl;
+
     private int id, day, month, year;
     private Double price;
 
@@ -21,7 +31,6 @@ public class Order {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.dueDate = dueDate;
-
         this.day = setDay(dueDate);
         this.month = setMonth(dueDate);
         this.year = setYear(dueDate);
@@ -31,6 +40,8 @@ public class Order {
         this.id = id;
         this.price = price;
 
+        this.imageTitle = null;
+        this.imageUrl = null;
     }
 
     public void setFirstName(String firstName) {
@@ -59,7 +70,7 @@ public class Order {
 
     private int setDay(String dueDate) {
         String parseHelper = dueDate.substring(dueDate.indexOf("-") + 1);
-        day =  Integer.parseInt(parseHelper.substring(parseHelper.indexOf("-") + 1));
+        day = Integer.parseInt(parseHelper.substring(parseHelper.indexOf("-") + 1));
         return day;
     }
 
@@ -80,6 +91,28 @@ public class Order {
     private int setYear(String dueDate) {
         year = Integer.parseInt(dueDate.substring(0, dueDate.indexOf("-")));
         return year;
+    }
+
+    private String formatDate(String dueDate) throws ParseException {
+
+        char[] chars = dueDate.toCharArray();
+
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == '-') {
+                StringBuilder sb = new StringBuilder();
+                sb.append(dueDate);
+                sb.deleteCharAt(i);
+                sb.insert(i, "/");
+                dueDate = sb.toString();
+            }
+        }
+
+        SimpleDateFormat outputFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = inputFormat.parse(dueDate);
+        String output = outputFormat.format(date);
+        
+        return output;
     }
 
     public void setProduct(String product) {
@@ -106,8 +139,8 @@ public class Order {
         return email;
     }
 
-    public String getDueDate() {
-        return dueDate;
+    public String getDueDate() throws ParseException {
+        return formatDate(dueDate);
     }
 
     public String getProduct() {
@@ -118,12 +151,17 @@ public class Order {
         return comments;
     }
 
-    public double getPrice() {
-        return price;
+    public String getPrice() {
+        return fmtPrice(price);
     }
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    private String fmtPrice(Double price) {
+        DecimalFormat dFormat = new DecimalFormat("#.00");
+        return dFormat.format(price);
     }
 
     public int getId() {
@@ -132,6 +170,22 @@ public class Order {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getImageTitle() {
+        return imageTitle;
+    }
+
+    public void setImageTitle(String imageTitle) {
+        this.imageTitle = imageTitle;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 }

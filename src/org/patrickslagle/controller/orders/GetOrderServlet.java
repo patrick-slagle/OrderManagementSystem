@@ -1,6 +1,7 @@
 package org.patrickslagle.controller.orders;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class GetOrderServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         
-        //Setting some date attributes for 
+        //Setting some date attributes for determining the date of JSP
         String parseHelper = fmtDate.substring(fmtDate.indexOf("-") + 1);
         String year = fmtDate.substring(0, fmtDate.indexOf("-"));
         String day = parseHelper.substring(parseHelper.indexOf("-") + 1);
@@ -65,11 +66,15 @@ public class GetOrderServlet extends HttpServlet {
         
         ArrayList<Double> prices = new ArrayList<Double>();
         for (int i = 0; i < al.size(); i++) {
-            double price = al.get(i).getPrice();
+            String stringPrice = al.get(i).getPrice();
+            double price = Double.parseDouble(stringPrice);
             prices.add(price);
         }
-        double priceTotal = priceTotal(prices);
+        double total = priceTotal(prices);
+        String priceTotal = fmtTotal(total);
         session.setAttribute("priceTotal", priceTotal);
+        
+        
 
     }
 
@@ -86,5 +91,16 @@ public class GetOrderServlet extends HttpServlet {
         }
         return total;
     }
+    
+    /**
+     * properly formats the price total
+     * 
+     * @param total
+     * @return 
+     */
+    private String fmtTotal(double total) {
+        DecimalFormat dFormat = new DecimalFormat("#.00");
+        return dFormat.format(total);
+    } 
 
 }
