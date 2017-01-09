@@ -45,7 +45,7 @@ public class GetOrderServlet extends HttpServlet {
             throws ServletException, IOException {
         FormManager fm = new FormManager();
         List<Order> al = fm.getOrders();
-        
+                
         java.util.Date date = new java.util.Date();
         String fmtDate = new java.text.SimpleDateFormat("yyyy-MM-dd").format(date);
 

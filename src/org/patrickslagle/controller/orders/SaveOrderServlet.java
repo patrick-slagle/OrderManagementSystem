@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.patrickslagle.model.FormManager;
 import org.patrickslagle.model.Order;
-import org.patrickslagle.calendar.CalendarEventServlet
+import org.patrickslagle.calendar.CalendarEventServlet;
 /**
  * <h1>Servlet implementation for saving orders</h1>
  */
@@ -63,7 +63,6 @@ public class SaveOrderServlet extends HttpServlet {
 
             request.setAttribute("orders", al);
             
-              
            response.sendRedirect("logout.do");
         }
 

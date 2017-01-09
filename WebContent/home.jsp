@@ -45,9 +45,8 @@
 
         <%-- calling the servlet to get the list of orders --%>
 
-        <c:if test="${ sessionScope.orders == null }">
-            <jsp:include page="/get-orders.do" />
-        </c:if>
+        <jsp:include page="/get-orders.do" />
+
 
         <%-- calling the servlet to populate the calendar --%>
 
@@ -59,7 +58,7 @@
 
         <%-- Where the modal window will be created --%>
 
-       <div class="modalContainer" id="modal">
+        <div class="modalContainer" id="modal">
             <span class="closeModal">&times;</span>
             <div class="modalContent"></div>
         </div>
@@ -77,6 +76,9 @@
                     <a href="#" class="tablinks" onclick="openTab(event, 'calendar')">Calendar</a>
                 </li>
             </ul>
+
+           
+
             <table id="orderTable" class="tabcontent">
                 <tr class="tableHeaders">
                     <th class="headerItems">Name</th>
@@ -88,16 +90,12 @@
                 <%-- displaying the table using the previously set attributes and JSTL --%>
 
                 <c:forEach var="order" items="${ orders }">
-                    <c:if test="${ order.year >= year }">
-                        <c:if test="${ order.month >= month }">
                             <tr>
                                 <td class="name">${ order.firstName } ${ order.lastName }</td>
                                 <td>${ order.dueDate }</td>
                                 <td>${ order.product }</td>
                                 <td>${ order.comments }</td>
                             </tr>
-                        </c:if>
-                    </c:if>
                 </c:forEach>
 
             </table>

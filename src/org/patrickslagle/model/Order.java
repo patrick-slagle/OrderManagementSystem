@@ -1,15 +1,11 @@
 package org.patrickslagle.model;
 
-import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.text.DateFormatter;
 
 /**
  * <h1>Order objects used to encapsulate data from orders table in the
@@ -30,7 +26,11 @@ public class Order {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.dueDate = dueDate;
+        try {
+            this.dueDate = formatDate(dueDate);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
         this.day = setDay(dueDate);
         this.month = setMonth(dueDate);
         this.year = setYear(dueDate);
@@ -140,7 +140,7 @@ public class Order {
     }
 
     public String getDueDate() throws ParseException {
-        return formatDate(dueDate);
+        return dueDate;
     }
 
     public String getProduct() {

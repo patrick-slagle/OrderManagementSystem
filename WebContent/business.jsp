@@ -98,6 +98,7 @@
                     </div>
                 </div>
             </div>
+
             <table id="orderTable" align="center">
                 <tr>
                     <th>Date</th>
@@ -108,28 +109,24 @@
                 <%--displaying the data with JSTL --%>
 
                 <c:forEach begin="0" end="5" var="order" items="${ orders }">
-                    
-                    <c:if test="${ order.year <= year }">
-                        <c:if test="${ order.month <= month }">
-                            <tr>
-                                <td>${order.dueDate}</td>
-                                <td>${ order.firstName } ${order.lastName} </td>
-                                <td>${ order.price }</td>
-                            </tr>
-                        </c:if>
-                    </c:if>
+                    <tr>
+                        <td>${order.dueDate}</td>
+                        <td>${ order.firstName } ${order.lastName} </td>
+                        <td>${ order.price }</td>
+                    </tr>
                 </c:forEach>
+
             </table>
-                
+
             <table id="total" align="center">
                 <tr>
-                    <th>Total</th>
+                    <th>All Orders Total</th>
                 </tr>
                 <tr>
                     <td>${ priceTotal }</td>
                 </tr>
             </table>
         </div>
-               
+
     </body>
 </html>

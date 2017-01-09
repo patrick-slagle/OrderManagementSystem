@@ -54,8 +54,6 @@ public class CalendarEventServlet extends HttpServlet {
         List<Event> items = events.getItems();
 
         //Here I add images to the order objects if the events have them.
-        addOrderAttachments(items, orders);
-
         //add each order as an event unless it is already an event
         Date startDate = new Date();
         Date endDate;
@@ -104,12 +102,12 @@ public class CalendarEventServlet extends HttpServlet {
                 }
 
                 event.setId(String.valueOf(orders.get(i).getId()));
-                   try {
+                try {
                     event = service.events().update("primary", event.getId(), event).execute();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
+                addOrderAttachments(items, orders);
 
             }
         }
@@ -124,6 +122,7 @@ public class CalendarEventServlet extends HttpServlet {
 
             if (attachments != null) {
                 for (int j = 0; j < orders.size(); j++) {
+                    event.setId(String.valueOf(orders.get(i).getId()));
                     if (orders.get(j).getId() == Integer.parseInt(event.getId())) {
                         for (int k = 0; k < attachments.size(); k++) {
                             orders.get(j).setImageTitle(attachments.get(k).getTitle());

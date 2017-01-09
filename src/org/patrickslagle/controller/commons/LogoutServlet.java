@@ -37,7 +37,6 @@ public class LogoutServlet extends HttpServlet {
         
         if(session != null) {
             session.invalidate();
-        
         }
         rd.forward(request, response);
     }

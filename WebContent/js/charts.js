@@ -28,6 +28,7 @@ var twoMonthsAgo = (twoDigitMonth - 2);
 
 $.get('convert-orders.do', function (responseText) {
     var json = JSON.parse(responseText);
+    console.log(json);
     $.each(json, function (key, value) {
         
         //get order month
@@ -40,10 +41,10 @@ $.get('convert-orders.do', function (responseText) {
         var orderMonthAsInt = parseInt(month);
         var lastMonthAsInt = parseInt(lastMonth);
         var twoMonthsAgoAsInt = parseInt(twoMonthsAgo);
-        
         //perform logic to count up product and month totals for the charts
-        if (orderMonthAsInt <= thisMonthAsInt) {
-
+        console.log(orderMonthAsInt + " " + thisMonthAsInt);
+      //  if (orderMonthAsInt <= thisMonthAsInt) {
+            
             switch (value.product) {
                 case 'cake':
                     cakes++;
@@ -58,8 +59,7 @@ $.get('convert-orders.do', function (responseText) {
                     other++;
                     break;
             }
-           
-            if(orderMonthAsInt === lastMonthAsInt) {
+            //if(orderMonthAsInt === lastMonthAsInt) {
                     switch (value.product) {
                         case 'cake':
                             cakesLastMonth++;
@@ -74,7 +74,7 @@ $.get('convert-orders.do', function (responseText) {
                             otherLastMonth++;
                             break;
                     }
-                } else if (orderMonthAsInt === twoMonthsAgoAsInt) {
+              //  } else if (orderMonthAsInt === twoMonthsAgoAsInt) {
                     switch (value.product) {
                         case 'cake':
                             cakesTwoMonthsAgo++;
@@ -89,8 +89,8 @@ $.get('convert-orders.do', function (responseText) {
                             otherTwoMonthsAgo++;
                             break;
                     }
-            }
-        }
+//            }
+        //}
     });
 });
 

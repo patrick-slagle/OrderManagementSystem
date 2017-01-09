@@ -212,7 +212,7 @@ public class FormManager {
         }
     }
 
-    public ArrayList<Order> getOrdersBySearch(ArrayList<Order> orders, String query) {
+    public ArrayList<Order> getOrdersBySearch(ArrayList<Order> orders, String query) throws ParseException {
         ArrayList<Order> resultOrders = null;
         String type = "";
         final String nameExp = ".*[a-zA-Z]+.*[a-zA-Z]";
@@ -236,7 +236,7 @@ public class FormManager {
         return resultOrders;
     }
 
-    private ArrayList<Order> getOrderResult(ArrayList<Order> orders, String type, String query) {
+    private ArrayList<Order> getOrderResult(ArrayList<Order> orders, String type, String query) throws ParseException {
         ArrayList<Order> result = new ArrayList<Order>();
         switch (type) {
             case "name":
@@ -247,7 +247,7 @@ public class FormManager {
                 }
             case "price":
                 for (int i = 0; i < orders.size(); i++) {
-                    if (Double.toString(orders.get(i).getPrice()).equals(query)) {
+                    if (orders.get(i).getPrice().equals(query)) {
                         result.add(orders.get(i));
                     }
                 }

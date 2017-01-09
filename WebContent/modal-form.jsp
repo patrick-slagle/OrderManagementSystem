@@ -25,3 +25,4 @@
 <div id="imagesDiv" class="centerInput">
     <a href="${selectedOrder.imageUrl}">${selectedOrder.imageTitle}</a>
 </div>
+${selectedOrder.id}
