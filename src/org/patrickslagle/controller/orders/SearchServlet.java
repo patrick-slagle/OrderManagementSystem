@@ -55,13 +55,10 @@ public class SearchServlet extends HttpServlet {
         for (int i = 0; i < resultOrders.size(); i++) {
             idList.add(resultOrders.get(i).getId());
         }
-        System.out.println(idList);
         request.getSession().setAttribute("searchIds", idList);
-        System.out.println(request.getSession().getId());
 
         response.setContentType("application/json");
         String json = new Gson().toJson(resultOrders);
-        System.out.println(json);
         response.getWriter().write(json);
 
     }

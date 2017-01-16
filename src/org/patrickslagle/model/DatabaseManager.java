@@ -22,7 +22,6 @@ public class DatabaseManager {
 	private String url;
 	private String driver;
 	private Connection conn;
-	private Statement stmt;
 
 	/**
 	 * used by other methods for database access

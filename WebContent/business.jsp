@@ -61,6 +61,13 @@
     </head>
     <body>
 
+
+        <%-- set orders if it isn't set already --%>
+
+        <c:if test="${ sessionScope.orders == null }">
+            <jsp:include page="/get-orders.do" />
+        </c:if>
+
         <%-- header --%>
 
         <jsp:include page="header.jsp" />
@@ -109,15 +116,15 @@
                 <%--displaying the data with JSTL --%>
 
                 <c:forEach begin="0" end="5" var="order" items="${ orders }">
-                    <tr>
-                        <td>${order.dueDate}</td>
-                        <td>${ order.firstName } ${order.lastName} </td>
-                        <td>${ order.price }</td>
-                    </tr>
+                          <tr>
+                              <td>${order.dueDate}</td>
+                              <td>${ order.firstName } ${order.lastName} </td>
+                              <td>${ order.price }</td>
+                          </tr>
                 </c:forEach>
 
             </table>
-
+            
             <table id="total" align="center">
                 <tr>
                     <th>All Orders Total</th>

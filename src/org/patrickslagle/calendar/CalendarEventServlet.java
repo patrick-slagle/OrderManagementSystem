@@ -15,9 +15,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -67,7 +64,6 @@ public class CalendarEventServlet extends HttpServlet {
                 String date = "";
                 try {
                     date = orders.get(i).getDueDate();
-                    System.out.println(date);
                 } catch (ParseException ex) {
                     ex.printStackTrace();
                 }
@@ -86,43 +82,45 @@ public class CalendarEventServlet extends HttpServlet {
 
                 EventDateTime startEventDateTime = new EventDateTime().setDateTime(startDateTime);
                 EventDateTime endEventDateTime = new EventDateTime().setDateTime(endDateTime);
-                System.out.println(orders.get(i).getId());
                 //create event, save to calendar
                 Event event = new Event()
                         .setSummary(orders.get(i).getProduct() + " for " + orders.get(i).getFirstName())
                         .setDescription("A " + orders.get(i).getProduct() + " for "
                                 + orders.get(i).getFirstName()
                                 + " " + orders.get(i).getLastName())
+                        .setId(Integer.toString(orders.get(i).getId()))
                         .setStart(startEventDateTime)
                         .setEnd(endEventDateTime);
+
                 try {
-                    event = service.events().insert("primary", event).execute();
+                    for (int j = 0; j < items.size(); j++) {
+                        for (int k = 0; k < orders.size(); k++) {
+                            if (items.get(j).getId().equals(Integer.toString(orders.get(k).getId()))) {
+                                event = service.events().update("primary", event.getId(), event).execute();
+                            } else {
+                                event = service.events().insert("primary", event).execute();
+                            }
+                        }
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-                event.setId(String.valueOf(orders.get(i).getId()));
-                try {
-                    event = service.events().update("primary", event.getId(), event).execute();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                addOrderAttachments(items, orders);
-
             }
         }
+        
+        addOrderAttachments(items, orders);
 
         response.sendRedirect("home.jsp");
     }
 
-    public void addOrderAttachments(List<Event> items, List<Order> orders) {
+    private void addOrderAttachments(List<Event> items, List<Order> orders) {
         for (int i = 0; i < items.size(); i++) {
             Event event = items.get(i);
             List<EventAttachment> attachments = event.getAttachments();
 
             if (attachments != null) {
                 for (int j = 0; j < orders.size(); j++) {
-                    event.setId(String.valueOf(orders.get(i).getId()));
+
                     if (orders.get(j).getId() == Integer.parseInt(event.getId())) {
                         for (int k = 0; k < attachments.size(); k++) {
                             orders.get(j).setImageTitle(attachments.get(k).getTitle());

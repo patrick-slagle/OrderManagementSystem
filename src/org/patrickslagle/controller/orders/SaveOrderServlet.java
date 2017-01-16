@@ -65,7 +65,6 @@ public class SaveOrderServlet extends HttpServlet {
             
            response.sendRedirect("logout.do");
         }
-
     }
 
 }

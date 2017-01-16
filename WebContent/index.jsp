@@ -39,23 +39,6 @@
 					class="button-primary" value="Log in" />
 			</p>
 		</form>
-		<a href="register.jsp">
-			<h1 id="register">New User?</h1>
-		</a>
 	</div>
-
-<%-- on form submission, we use JSTL to test for a valid user. 
- 	JSTL is used rather than a servlet to make it easier to insert JQuery. --%>
-
- 	
-	<c:if test="${ pageContext.request.method == 'POST' }">
-		<c:if test="${ lm:validate(param.username, param.password) }">
-			<jsp:include page="/set-session.do" />
-			<jsp:forward page="home.jsp" />
-		</c:if>
-		<script>
-			$('#main').append('Invalid login! Please try again');
-		</script>
-	</c:if>
 </body>
 </html>

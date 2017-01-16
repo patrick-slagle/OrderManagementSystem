@@ -48,12 +48,11 @@ public class FormManager {
 
         double randNum = Math.random();
 
-        System.out.println(randNum);
         try {
             String sql = "INSERT INTO orders " + "(id, first_name , last_name , phone , email , "
                     + "due_date, product_type , comments, price) " + "VALUES (?,?,?,?,?,?,?,?,?)";
             pstmt = dbm.getConn().prepareStatement(sql);
-            
+
             pstmt.setInt(1, (int) randNum * 10000);
             pstmt.setString(2, firstName);
             pstmt.setString(3, lastName);
@@ -79,7 +78,6 @@ public class FormManager {
      * @return
      */
     private double formatPrice(String price) {
-        System.out.println(Double.parseDouble(price));
         return Double.parseDouble(price);
     }
 
@@ -120,7 +118,6 @@ public class FormManager {
             while (it.hasNext()) {
                 String s = it.next();
                 if (s.contains(Character.toString('[')) || s.contains(Character.toString(']'))) {
-                    System.out.println("removing");
                     list.remove(s);
                 }
             }
@@ -148,8 +145,6 @@ public class FormManager {
             // When getting orders, we encapsulate the data in order objects
             rs.beforeFirst();
             while (rs.next()) {
-                System.out.println(rs.getString("last_name"));
-
                 orderList.add(new Order(rs.getString("first_name"), rs.getString("last_name"), rs.getString("phone"),
                         rs.getString("email"), rs.getString("due_date"), rs.getString("product_type"),
                         rs.getString("comments"), rs.getInt("id"), rs.getDouble("price")));
@@ -220,15 +215,12 @@ public class FormManager {
         final String dateExp = "([0-9]{2})/([0-9]{2})/([0-9]{4})";
 
         if (query.matches(nameExp)) {
-            System.out.println(nameExp);
             type = "name";
             resultOrders = getOrderResult(orders, type, query);
         } else if (query.matches(priceExp)) {
             type = "price";
             resultOrders = getOrderResult(orders, type, query);
-            System.out.println(priceExp);
         } else if (query.matches(dateExp)) {
-            System.out.println(dateExp);
             type = "date";
             resultOrders = getOrderResult(orders, type, query);
         }
@@ -258,8 +250,6 @@ public class FormManager {
                     }
                 }
         }
-        System.out.println(result);
         return result;
     }
-
 }

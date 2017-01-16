@@ -77,7 +77,7 @@
                 </li>
             </ul>
 
-           
+
 
             <table id="orderTable" class="tabcontent">
                 <tr class="tableHeaders">
@@ -90,12 +90,16 @@
                 <%-- displaying the table using the previously set attributes and JSTL --%>
 
                 <c:forEach var="order" items="${ orders }">
-                            <tr>
-                                <td class="name">${ order.firstName } ${ order.lastName }</td>
-                                <td>${ order.dueDate }</td>
-                                <td>${ order.product }</td>
-                                <td>${ order.comments }</td>
-                            </tr>
+                    <c:if test="${ year == order.year && month == order.month && day <= order.day 
+                                   || year == order.year && month <= order.month 
+                                   || year < order.year }">
+                          <tr>
+                              <td class="name">${ order.firstName } ${ order.lastName }</td>
+                              <td>${ order.dueDate }</td>
+                              <td>${ order.product }</td>
+                              <td>${ order.comments }</td>
+                          </tr>
+                    </c:if>
                 </c:forEach>
 
             </table>

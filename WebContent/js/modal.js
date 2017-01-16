@@ -6,6 +6,7 @@ function openModal() {
 
     var span = document.getElementsByClassName("closeModal")[0];
     var modal = $('#modal');
+    
     $('#orderTable').find('tr').click(function () {
         var rowIndex = this.rowIndex;
         if (isAfterSearch === false) {

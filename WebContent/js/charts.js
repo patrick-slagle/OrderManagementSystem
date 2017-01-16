@@ -52,7 +52,7 @@ $.get('convert-orders.do', function (responseText) {
                 case 'cookies':
                     cookies++;
                     break;
-                case 'cupcakes ':
+                case 'cupcakes':
                     cupcakes++;
                     break;
                 default:
